@@ -3,4 +3,4 @@
 Krevetka - программа, позволяющее создавать быстрые, красивые, удобные HMTL и DIFF файлы с информацией об изменённых файлах игры и содержание lang файлов
 
 # Thanks
-[onejeuu](https://github.com/onejeuu) ([@scbanan](t.me/scbanan)) - HMTL Design, [binary templates](https://github.com/onejeuu/sc-file/blob/4.0-dev/templates/DIRMAP.bt)
+[onejeuu](https://github.com/onejeuu) ([@scbanan](t.me/scbanan)) - HTML Design, [binary templates](https://github.com/onejeuu/sc-file/blob/4.0-dev/templates/DIRMAP.bt)
