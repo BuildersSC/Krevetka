@@ -42,7 +42,6 @@ enum ChangeType {
 
 impl MapEntry {
     fn read_from(file: &mut File) -> Result<Self> {
-        // Проверяем, что можем прочитать как минимум 2 байта для размера
         let mut size_buf = [0u8; 2];
         match file.read_exact(&mut size_buf) {
             Ok(_) => {},
@@ -54,7 +53,6 @@ impl MapEntry {
 
         let size = u16::from_be_bytes(size_buf);
         
-        // Проверяем, что размер пути разумный
         if size == 0 {
             return Err(MapError::InvalidFormat("Нулевой размер пути".to_string()));
         }
@@ -97,14 +95,12 @@ fn split_path(path: &str) -> Vec<String> {
 fn generate_directory_tree(changes: &std::collections::BTreeMap<String, Vec<(String, ChangeType)>>) -> Result<String> {
     let mut html_content = String::new();
     
-    // Создаем дерево директорий
     let mut dir_tree: std::collections::BTreeMap<String, Vec<(String, String, ChangeType)>> = std::collections::BTreeMap::new();
     
     for (path, files) in changes {
         let parts = split_path(path);
         let mut current_path = String::new();
         
-        // Добавляем каждый уровень пути в дерево
         for part in &parts {
             let new_path = if current_path.is_empty() {
                 part.to_string()
@@ -118,14 +114,12 @@ fn generate_directory_tree(changes: &std::collections::BTreeMap<String, Vec<(Str
             current_path = new_path;
         }
         
-        // Добавляем файлы в последнюю директорию
         if let Some(entries) = dir_tree.get_mut(path) {
             entries.extend(files.iter().map(|(name, change_type)| 
                 (name.clone(), path.clone(), change_type.clone())));
         }
     }
     
-    // Рекурсивная функция для генерации HTML
     fn generate_html(
         path: &str,
         dir_tree: &std::collections::BTreeMap<String, Vec<(String, String, ChangeType)>>,
@@ -134,14 +128,11 @@ fn generate_directory_tree(changes: &std::collections::BTreeMap<String, Vec<(Str
     ) {
         let indent_str = " ".repeat(indent * 2);
         
-        // Пропускаем корневую директорию
         if !path.is_empty() {
-            // Открываем details для директории
             html.push_str(&format!("{}  <details class=\"directory\" open>\n", indent_str));
             html.push_str(&format!("{}    <summary class=\"name\">{}</summary>\n", indent_str, 
                 path.split('/').last().unwrap_or(path)));
-            
-            // Добавляем полный путь только если в директории есть измененные файлы
+
             if let Some(files) = dir_tree.get(path) {
                 if !files.is_empty() {
                     html.push_str(&format!("{}    <div class=\"path\">{}</div>\n", indent_str, path));
@@ -149,7 +140,6 @@ fn generate_directory_tree(changes: &std::collections::BTreeMap<String, Vec<(Str
             }
         }
         
-        // Добавляем файлы текущей директории
         if let Some(files) = dir_tree.get(path) {
             for (name, _, change_type) in files {
                 let (html_class, symbol) = match change_type {
@@ -163,7 +153,6 @@ fn generate_directory_tree(changes: &std::collections::BTreeMap<String, Vec<(Str
             }
         }
         
-        // Рекурсивно обрабатываем поддиректории
         let current_prefix = if path.is_empty() { String::new() } else { format!("{}/", path) };
         let subdirs: Vec<_> = dir_tree.keys()
             .filter(|k| k.starts_with(&current_prefix) && *k != path && 
@@ -179,13 +168,12 @@ fn generate_directory_tree(changes: &std::collections::BTreeMap<String, Vec<(Str
         }
     }
     
-    // Генерируем дерево
     generate_html("", &dir_tree, &mut html_content, 0);
     
     Ok(html_content)
 }
 
-fn process_lang_file(game_path: &Path) -> Result<()> {
+fn process_lang_file(game_path: &Path) -> Result<()> { // файлы игры должны находится в файлах лаунчера!!!
     let lang_path = game_path.parent().unwrap() // runtime
         .parent().unwrap() // EXBO
         .parent().unwrap() // Roaming
@@ -202,7 +190,6 @@ fn process_lang_file(game_path: &Path) -> Result<()> {
         .join("lang")
         .join("ru.lang");
 
-    // Проверяем существование исходного файла
     if !lang_path.exists() {
         println!("Файл локализации не найден по пути: {}", lang_path.display());
         return Ok(());
@@ -210,7 +197,6 @@ fn process_lang_file(game_path: &Path) -> Result<()> {
 
     let env_dir = PathBuf::from("environment").join("lang");
     
-    // Создаем директорию с обработкой ошибок
     if let Err(e) = fs::create_dir_all(&env_dir) {
         return Err(MapError::IoError(io::Error::new(
             io::ErrorKind::Other,
@@ -220,7 +206,6 @@ fn process_lang_file(game_path: &Path) -> Result<()> {
     
     let env_lang = env_dir.join("ru.lang");
     
-    // Копируем файл, если его нет в окружении
     if !env_lang.exists() {
         match fs::copy(&lang_path, &env_lang) {
             Ok(_) => {
@@ -236,7 +221,6 @@ fn process_lang_file(game_path: &Path) -> Result<()> {
         }
     }
     
-    // Читаем оба файла с обработкой ошибок
     let game_content = match fs::read_to_string(&lang_path) {
         Ok(content) => content,
         Err(e) => {
@@ -261,7 +245,6 @@ fn process_lang_file(game_path: &Path) -> Result<()> {
         return Ok(());
     }
     
-    // Сравниваем строки
     let game_lines: std::collections::HashMap<_, _> = game_content.lines()
         .filter(|l| !l.trim().is_empty())
         .map(|l| {
@@ -281,7 +264,6 @@ fn process_lang_file(game_path: &Path) -> Result<()> {
     let timestamp = Local::now().format("%d_%m_%Y");
     let mut diff_content = String::new();
     
-    // Находим изменения
     for (key, new_value) in &game_lines {
         match env_lines.get(key) {
             Some(old_value) if old_value != new_value => {
@@ -294,7 +276,6 @@ fn process_lang_file(game_path: &Path) -> Result<()> {
         }
     }
     
-    // Находим удаленные строки
     for key in env_lines.keys() {
         if !game_lines.contains_key(key) {
             if let Some(old_value) = env_lines.get(key).and_then(|v| *v) {
@@ -308,7 +289,6 @@ fn process_lang_file(game_path: &Path) -> Result<()> {
     if !diff_content.is_empty() {
         let diff_path = PathBuf::from("changes").join(format!("lang_changes_{}.diff", timestamp));
         
-        // Создаем директорию для изменений с обработкой ошибок
         if let Err(e) = fs::create_dir_all(diff_path.parent().unwrap()) {
             return Err(MapError::IoError(io::Error::new(
                 io::ErrorKind::Other,
@@ -316,7 +296,6 @@ fn process_lang_file(game_path: &Path) -> Result<()> {
             )));
         }
 
-        // Записываем файл изменений
         if let Err(e) = fs::write(&diff_path, diff_content) {
             return Err(MapError::IoError(io::Error::new(
                 io::ErrorKind::Other,
@@ -324,7 +303,6 @@ fn process_lang_file(game_path: &Path) -> Result<()> {
             )));
         }
 
-        // Копируем обновленный файл
         if let Err(e) = fs::copy(&lang_path, &env_lang) {
             return Err(MapError::IoError(io::Error::new(
                 io::ErrorKind::Other,
@@ -402,7 +380,6 @@ fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], output
 <body>
     <h1>ChangeLog {}</h1>
     <h2>Изменения файловой структуры ассетов игры</h2>
-    <h3>Источник: <a href="https://t.me/github.com/Art3mLapa" target="_blank">Krevetka</a></h3>
     <div class="changes">
     "#, timestamp);
 
@@ -452,7 +429,6 @@ fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], output
         }
     }
 
-    // Генерируем HTML с новой структурой
     let tree_html = generate_directory_tree(&changes)?;
     html_content.push_str(&tree_html);
     html_content.push_str(r#"</div>
@@ -465,7 +441,6 @@ fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], output
 </body>
 </html>"#);
 
-    // Записываем HTML файл
     let timestamp_str = timestamp.to_string().replace(".", "_");
     fs::write(
         output_dir.join(format!("changelog_{}.html", timestamp_str)),
@@ -500,13 +475,11 @@ fn init_environment() -> Result<PathBuf> {
 fn read_map_entries(file_path: &Path) -> Result<Vec<MapEntry>> {
     let mut file = File::open(file_path)?;
     
-    // Проверяем размер файла
     let file_size = file.metadata()?.len();
     if file_size < 4 {
         return Err(MapError::InvalidFormat("Файл слишком мал для корректной структуры".to_string()));
     }
 
-    // Читаем количество записей
     let mut count_buf = [0u8; 4];
     file.read_exact(&mut count_buf)
         .map_err(|e| MapError::IoError(io::Error::new(io::ErrorKind::Other,
@@ -514,12 +487,11 @@ fn read_map_entries(file_path: &Path) -> Result<Vec<MapEntry>> {
     
     let count = u32::from_be_bytes(count_buf);
     
-    // Проверяем, что количество записей разумное
     if count == 0 {
         return Err(MapError::InvalidFormat("Файл не содержит записей".to_string()));
     }
     
-    let approx_entry_size = 22; // минимальный размер записи (2 байта размер + 20 байт хеш)
+    let approx_entry_size = 22;
     if (count as u64) * (approx_entry_size as u64) > file_size {
         return Err(MapError::InvalidFormat(
             format!("Некорректное количество записей: {}. Файл слишком мал для такого количества", count)
@@ -555,7 +527,6 @@ fn monitor_changes() -> Result<()> {
 
         match game_map_result {
             Ok(game_map) => {
-                // Проверяем изменения в map файле
                 let game_len = fs::metadata(&game_map)?.len();
                 let env_len = fs::metadata(&env_map)?.len();
 
@@ -568,7 +539,6 @@ fn monitor_changes() -> Result<()> {
                     println!("Изменения сохранены в директории 'changes'");
                 }
 
-                // Проверяем изменения в lang файле
                 if let Err(e) = process_lang_file(&game_map) {
                     eprintln!("Ошибка при обработке lang файла: {}", e);
                 }
