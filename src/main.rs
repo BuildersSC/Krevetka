@@ -3,11 +3,12 @@ use std::{
     io::{self, Read},
     path::{Path, PathBuf},
     thread,
-    time::{Duration, Instant},
+    time::Duration,
 };
 use chrono::Local;
 use thiserror::Error;
 use winreg::{RegKey, enums::HKEY_CURRENT_USER};
+use toml::Value;
 
 #[derive(Error, Debug)]
 pub enum MapError {
@@ -17,12 +18,12 @@ pub enum MapError {
     IoError(#[from] io::Error),
     #[error("Файл игры не найден")]
     GameFileNotFound,
-    #[error("Превышено время ожидания файла игры")]
-    GameFileTimeout,
     #[error("Ошибка чтения структуры файла: {0}")]
     ParseError(String),
     #[error("Некорректный формат файла: {0}")]
     InvalidFormat(String),
+    #[error("Ошибка конфигурации: {0}")]
+    ConfigError(String),
 }
 
 type Result<T> = std::result::Result<T, MapError>;
@@ -94,7 +95,7 @@ fn split_path(path: &str) -> Vec<String> {
 
 fn generate_directory_tree(changes: &std::collections::BTreeMap<String, Vec<(String, ChangeType)>>) -> Result<String> {
     let mut html_content = String::new();
-    
+
     let mut dir_tree: std::collections::BTreeMap<String, Vec<(String, String, ChangeType)>> = std::collections::BTreeMap::new();
     
     for (path, files) in changes {
@@ -132,7 +133,7 @@ fn generate_directory_tree(changes: &std::collections::BTreeMap<String, Vec<(Str
             html.push_str(&format!("{}  <details class=\"directory\" open>\n", indent_str));
             html.push_str(&format!("{}    <summary class=\"name\">{}</summary>\n", indent_str, 
                 path.split('/').last().unwrap_or(path)));
-
+            
             if let Some(files) = dir_tree.get(path) {
                 if !files.is_empty() {
                     html.push_str(&format!("{}    <div class=\"path\">{}</div>\n", indent_str, path));
@@ -173,7 +174,7 @@ fn generate_directory_tree(changes: &std::collections::BTreeMap<String, Vec<(Str
     Ok(html_content)
 }
 
-fn process_lang_file(game_path: &Path) -> Result<()> { // файлы игры должны находится в файлах лаунчера!!!
+fn process_lang_file(game_path: &Path) -> Result<()> {
     let lang_path = game_path.parent().unwrap() // runtime
         .parent().unwrap() // EXBO
         .parent().unwrap() // Roaming
@@ -261,7 +262,6 @@ fn process_lang_file(game_path: &Path) -> Result<()> { // файлы игры д
         })
         .collect();
     
-    let timestamp = Local::now().format("%d_%m_%Y");
     let mut diff_content = String::new();
     
     for (key, new_value) in &game_lines {
@@ -287,7 +287,7 @@ fn process_lang_file(game_path: &Path) -> Result<()> { // файлы игры д
     }
     
     if !diff_content.is_empty() {
-        let diff_path = PathBuf::from("changes").join(format!("lang_changes_{}.diff", timestamp));
+        let diff_path = PathBuf::from("changes").join("lang_changes.diff");
         
         if let Err(e) = fs::create_dir_all(diff_path.parent().unwrap()) {
             return Err(MapError::IoError(io::Error::new(
@@ -316,6 +316,20 @@ fn process_lang_file(game_path: &Path) -> Result<()> { // файлы игры д
     Ok(())
 }
 
+fn read_github_token() -> Result<String> {
+    let config_content = fs::read_to_string("config.toml")
+        .map_err(|e| MapError::ConfigError(format!("Не удалось прочитать config.toml: {}", e)))?;
+    
+    let config: Value = toml::from_str(&config_content)
+        .map_err(|e| MapError::ConfigError(format!("Ошибка парсинга config.toml: {}", e)))?;
+    
+    config.get("github")
+        .and_then(|github| github.get("token"))
+        .and_then(|token| token.as_str())
+        .map(String::from)
+        .ok_or_else(|| MapError::ConfigError("Токен GitHub не найден в конфигурации".to_string()))
+}
+
 fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], output_dir: &Path) -> Result<()> {
     fs::create_dir_all(output_dir)?;
     
@@ -338,16 +352,35 @@ fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], output
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }}
+        body::before {{
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('pattern_anti_spectrum.png');
+            background-repeat: repeat;
+            background-size: 200px;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
         }}
         .changes {{
             width: 100%;
             flex: 1;
+            position: relative;
+            z-index: 1;
         }}
         .directory,
         .file,
         .path {{
             margin-left: 16px;
             width: 100%;
+            position: relative;
         }}
         .path {{
             opacity: 0.5;
@@ -358,11 +391,34 @@ fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], output
         .added {{ color: #a0d468; }}
         .deleted {{ color: #ff6b6b; }}
         .modified {{ color: #ffd700; }}
+        .lang-changes {{
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+        }}
+        .diff-line {{
+            font-family: 'Consolas', monospace;
+            padding: 4px 8px;
+            margin: 2px 0;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.2);
+        }}
+        .no-changes {{
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-style: italic;
+        }}
         .footer {{
             margin-top: 20px;
             text-align: center;
             padding: 10px;
             border-top: 1px solid #333;
+            position: relative;
+            z-index: 1;
         }}
         .footer a {{
             color: #c5c5c5;
@@ -370,23 +426,34 @@ fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], output
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            transition: color 0.3s ease;
+        }}
+        .footer a:hover {{
+            color: #8a9cff;
         }}
         .footer img {{
             width: 24px;
             height: 24px;
+        }}
+        h3 a {{
+            color: #8a9cff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }}
+        h3 a:hover {{
+            color: #b39ddb;
         }}
     </style>
 </head>
 <body>
     <h1>ChangeLog {}</h1>
     <h2>Изменения файловой структуры ассетов игры</h2>
+    <h3>Источник: <a href="https://github.com/Art3mLapa" target="_blank">Krevetka</a></h3>
     <div class="changes">
     "#, timestamp);
-
-    // Создаем структуру изменений по директориям
+//(387) fvck spectrum sc
     let mut changes: std::collections::BTreeMap<String, Vec<(String, ChangeType)>> = std::collections::BTreeMap::new();
 
-    // Создаем HashMap для быстрого поиска
     let old_map: std::collections::HashMap<_, _> = old_entries
         .iter()
         .map(|e| (&e.path, &e.hash))
@@ -397,7 +464,6 @@ fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], output
         .map(|e| (&e.path, &e.hash))
         .collect();
 
-    // Поиск изменений и группировка по директориям
     for (path, new_hash) in new_map.iter() {
         let change_type = match old_map.get(path) {
             Some(old_hash) if old_hash != new_hash => ChangeType::Modified,
@@ -415,7 +481,6 @@ fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], output
             .push((file, change_type));
     }
 
-    // Добавляем удаленные файлы
     for path in old_map.keys() {
         if !new_map.contains_key(path) {
             let (dir, file) = match path.rfind('/') {
@@ -431,21 +496,66 @@ fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], output
 
     let tree_html = generate_directory_tree(&changes)?;
     html_content.push_str(&tree_html);
+    
+    html_content.push_str(r#"</div>
+    <h2>Изменения в файле локализации</h2>
+    <div class="lang-changes">"#);
+
+    let diff_path = PathBuf::from("changes").join("lang_changes.diff");
+    if diff_path.exists() {
+        let diff_content = fs::read_to_string(&diff_path)?;
+        for line in diff_content.lines() {
+            let (class, content) = match line.chars().next() {
+                Some('+') => ("added", &line[1..]),
+                Some('-') => ("deleted", &line[1..]),
+                Some('~') => ("modified", &line[1..]),
+                _ => ("", line)
+            };
+            html_content.push_str(&format!(
+                r#"<div class="diff-line {}">{}</div>"#,
+                class, content
+            ));
+        }
+    } else {
+        html_content.push_str(r#"<div class="no-changes">Изменений в локализации не обнаружено</div>"#);
+    }
+
     html_content.push_str(r#"</div>
     <div class="footer">
         <a href="https://github.com/BuildersSC/Krevetka" target="_blank">
-            <img src="@icon.png" alt="Krevetka Logo">
-            <span>This HTML site made by Krevetka.</span>
+            <img src="icon.png" alt="Krevetka Logo">
+            <span>This HTML site generated by Krevetka.</span>
         </a>
     </div>
 </body>
 </html>"#);
 
-    let timestamp_str = timestamp.to_string().replace(".", "_");
     fs::write(
-        output_dir.join(format!("changelog_{}.html", timestamp_str)),
+        output_dir.join("index.html"),
         html_content,
     )?;
+
+//  #[cfg(not(debug_assertions))]
+//  {
+
+//      let github_token = read_github_token()?;
+
+//      let home_dir = std::env::var("USERPROFILE").unwrap_or_else(|_| String::from("C:\\Users\\user"));
+//      let bun_path = PathBuf::from(home_dir).join(".bun").join("bin").join("bun.exe");
+
+//        match std::process::Command::new(bun_path)
+//            .current_dir("docs")
+//            .arg("deploy.js")
+//            .env("GITHUB_TOKEN", github_token)
+//            .status()
+//        {
+//          Ok(_) => println!("Изменения успешно опубликованы на GitHub Pages"),
+//          Err(e) => println!("Ошибка при запуске Bun: {}. HTML файл сохранен локально в директории 'changes'", e)
+//        }
+//  }
+
+//  #[cfg(debug_assertions)]
+//  println!("Режим отладки: публикация на GitHub Pages отключена");
 
     Ok(())
 }
@@ -513,8 +623,7 @@ fn read_map_entries(file_path: &Path) -> Result<Vec<MapEntry>> {
 
 fn monitor_changes() -> Result<()> {
     let env_map = init_environment()?;
-    let mut last_check = Instant::now();
-    let timeout_duration = Duration::from_secs(30);
+    let mut last_diff_content = String::new();
     
     loop {
         let game_map_result = get_game_path().and_then(|path| {
@@ -527,6 +636,9 @@ fn monitor_changes() -> Result<()> {
 
         match game_map_result {
             Ok(game_map) => {
+                let mut changes_detected = false;
+                let mut map_entries = None;
+
                 let game_len = fs::metadata(&game_map)?.len();
                 let env_len = fs::metadata(&env_map)?.len();
 
@@ -534,22 +646,42 @@ fn monitor_changes() -> Result<()> {
                     println!("Обнаружены изменения в файле карты!");
                     let old_entries = read_map_entries(&env_map)?;
                     let new_entries = read_map_entries(&game_map)?;
-                    generate_changelog(&old_entries, &new_entries, Path::new("changes"))?;
+                    map_entries = Some((old_entries, new_entries));
                     fs::copy(&game_map, &env_map)?;
-                    println!("Изменения сохранены в директории 'changes'");
+                    changes_detected = true;
+                    println!("Изменения в файле карты сохранены");
                 }
 
                 if let Err(e) = process_lang_file(&game_map) {
                     eprintln!("Ошибка при обработке lang файла: {}", e);
+                } else {
+                    let diff_path = PathBuf::from("changes").join("lang_changes.diff");
+                    if diff_path.exists() {
+                        match fs::read_to_string(&diff_path) {
+                            Ok(current_diff_content) => {
+                                if current_diff_content != last_diff_content {
+                                    changes_detected = true;
+                                    last_diff_content = current_diff_content;
+                                }
+                            },
+                            Err(e) => eprintln!("Ошибка при чтении diff файла: {}", e)
+                        }
+                    }
+                }
+
+                if changes_detected {
+                    if let Some((old_entries, new_entries)) = map_entries {
+                        generate_changelog(&old_entries, &new_entries, Path::new("docs"))?;
+                    } else {
+                        let entries = read_map_entries(&env_map)?;
+                        generate_changelog(&entries, &entries, Path::new("docs"))?;
+                    }
+                    println!("Изменения сохранены в HTML документе");
                 }
                 
-                last_check = Instant::now();
-                thread::sleep(Duration::from_secs(5));
+                thread::sleep(Duration::from_secs(1));
             }
             Err(MapError::GameFileNotFound) => {
-                if last_check.elapsed() > timeout_duration {
-                    return Err(MapError::GameFileTimeout);
-                }
                 println!("Файл игры не найден, повторная попытка через 1 секунду...");
                 thread::sleep(Duration::from_secs(1));
             }
