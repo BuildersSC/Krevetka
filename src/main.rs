@@ -451,7 +451,7 @@ fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], output
     <h3>Источник: <a href="https://github.com/Art3mLapa" target="_blank">Krevetka</a></h3>
     <div class="changes">
     "#, timestamp);
-//(387) fvck spectrum sc
+//(365) fvck spectrum sc
     let mut changes: std::collections::BTreeMap<String, Vec<(String, ChangeType)>> = std::collections::BTreeMap::new();
 
     let old_map: std::collections::HashMap<_, _> = old_entries
