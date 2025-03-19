@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Патчноут</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Изменения в файлах ассетов игры" />
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #c5c5c5;
+            font-family: monospace;
+            padding: 16px;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('pattern_anti_spectrum.png');
+            background-repeat: repeat;
+            background-size: 200px;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .changes {
+            width: 100%;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+        .directory,
+        .file,
+        .path {
+            margin-left: 16px;
+            width: 100%;
+            position: relative;
+        }
+        .path {
+            opacity: 0.5;
+        }
+        .directory > .name {
+            font-size: 16px;
+        }
+        .added { color: #a0d468; }
+        .deleted { color: #ff6b6b; }
+        .modified { color: #ffd700; }
+        .lang-changes {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .diff-line {
+            font-family: 'Consolas', monospace;
+            padding: 4px 8px;
+            margin: 2px 0;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .no-changes {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-style: italic;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid #333;
+            position: relative;
+            z-index: 1;
+        }
+        .footer a {
+            color: #c5c5c5;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #8a9cff;
+        }
+        .footer img {
+            width: 24px;
+            height: 24px;
+        }
+        h3 a {
+            color: #8a9cff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        h3 a:hover {
+            color: #b39ddb;
+        }
+    </style>
+</head>
+<body>
+    <h1>ChangeLog 19.03.2025</h1>
+    <h2>Изменения файловой структуры ассетов игры</h2>
+    <h3>Источник: <a href="https://github.com/Art3mLapa" target="_blank">Krevetka</a></h3>
+    <div class="changes">
+      <details class="directory" open>
+    <summary class="name">modassets</summary>
+      <details class="directory" open>
+        <summary class="name">assets</summary>
+          <details class="directory" open>
+            <summary class="name">_localized</summary>
+              <details class="directory" open>
+                <summary class="name">ru</summary>
+                  <details class="directory" open>
+                    <summary class="name">stalker</summary>
+                      <details class="directory" open>
+                        <summary class="name">subtitles</summary>
+                        <div class="path">modassets/assets/_localized/ru/stalker/subtitles</div>
+                        <div class="file modified">
+                          ~ snegurochka2025_1.srt
+                        </div>
+                      </details>
+                  </details>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">bundle</summary>
+            <div class="path">modassets/assets/bundle</div>
+            <div class="file modified">
+              ~ boxes.xeon
+            </div>
+            <div class="file modified">
+              ~ shaders.xeon
+            </div>
+            <div class="file modified">
+              ~ icons.xeon
+            </div>
+            <div class="file modified">
+              ~ texmeta.xeon
+            </div>
+            <div class="file modified">
+              ~ small_images.xeon
+            </div>
+            <div class="file modified">
+              ~ anim_casts.xeon
+            </div>
+            <div class="file modified">
+              ~ materials.xeon
+            </div>
+            <div class="file modified">
+              ~ configs.xeon
+            </div>
+            <div class="file modified">
+              ~ effects.xeon
+            </div>
+          </details>
+          <details class="directory" open>
+            <summary class="name">customitems</summary>
+              <details class="directory" open>
+                <summary class="name">models</summary>
+                  <details class="directory" open>
+                    <summary class="name">blocks</summary>
+                      <details class="directory" open>
+                        <summary class="name">decals</summary>
+                          <details class="directory" open>
+                            <summary class="name">newDecals</summary>
+                              <details class="directory" open>
+                                <summary class="name">alphabet</summary>
+                                  <details class="directory" open>
+                                    <summary class="name">snowstorm</summary>
+                                      <details class="directory" open>
+                                        <summary class="name">letters</summary>
+                                        <div class="path">modassets/assets/customitems/models/blocks/decals/newDecals/alphabet/snowstorm/letters</div>
+                                        <div class="file added">
+                                          + YU.ol
+                                        </div>
+                                        <div class="file added">
+                                          + A.ol
+                                        </div>
+                                        <div class="file added">
+                                          + E.ol
+                                        </div>
+                                        <div class="file added">
+                                          + YA.ol
+                                        </div>
+                                        <div class="file added">
+                                          + X.ol
+                                        </div>
+                                        <div class="file added">
+                                          + T.ol
+                                        </div>
+                                        <div class="file added">
+                                          + G.ol
+                                        </div>
+                                        <div class="file added">
+                                          + B.ol
+                                        </div>
+                                        <div class="file added">
+                                          + K.ol
+                                        </div>
+                                        <div class="file added">
+                                          + Z.ol
+                                        </div>
+                                        <div class="file added">
+                                          + M.ol
+                                        </div>
+                                        <div class="file added">
+                                          + Y.ol
+                                        </div>
+                                        <div class="file added">
+                                          + P.ol
+                                        </div>
+                                        <div class="file added">
+                                          + SH.ol
+                                        </div>
+                                        <div class="file added">
+                                          + L.ol
+                                        </div>
+                                        <div class="file added">
+                                          + ZH.ol
+                                        </div>
+                                        <div class="file added">
+                                          + H.ol
+                                        </div>
+                                        <div class="file added">
+                                          + D.ol
+                                        </div>
+                                        <div class="file added">
+                                          + TS.ol
+                                        </div>
+                                        <div class="file added">
+                                          + V.ol
+                                        </div>
+                                        <div class="file added">
+                                          + CH.ol
+                                        </div>
+                                        <div class="file added">
+                                          + O.ol
+                                        </div>
+                                        <div class="file added">
+                                          + SHCH.ol
+                                        </div>
+                                        <div class="file added">
+                                          + 3.ol
+                                        </div>
+                                        <div class="file added">
+                                          + U.ol
+                                        </div>
+                                        <div class="file added">
+                                          + R.ol
+                                        </div>
+                                        <div class="file added">
+                                          + F.ol
+                                        </div>
+                                        <div class="file added">
+                                          + C.ol
+                                        </div>
+                                        <div class="file added">
+                                          + I.ol
+                                        </div>
+                                      </details>
+                                      <details class="directory" open>
+                                        <summary class="name">numbers</summary>
+                                        <div class="path">modassets/assets/customitems/models/blocks/decals/newDecals/alphabet/snowstorm/numbers</div>
+                                        <div class="file added">
+                                          + 9.ol
+                                        </div>
+                                        <div class="file added">
+                                          + 3.ol
+                                        </div>
+                                        <div class="file added">
+                                          + 5.ol
+                                        </div>
+                                        <div class="file added">
+                                          + 8.ol
+                                        </div>
+                                        <div class="file added">
+                                          + 4.ol
+                                        </div>
+                                        <div class="file added">
+                                          + 1.ol
+                                        </div>
+                                        <div class="file added">
+                                          + 7.ol
+                                        </div>
+                                        <div class="file added">
+                                          + 2.ol
+                                        </div>
+                                        <div class="file added">
+                                          + 0.ol
+                                        </div>
+                                        <div class="file added">
+                                          + 6.ol
+                                        </div>
+                                      </details>
+                                  </details>
+                              </details>
+                              <details class="directory" open>
+                                <summary class="name">iznanka</summary>
+                                <div class="path">modassets/assets/customitems/models/blocks/decals/newDecals/iznanka</div>
+                                <div class="file added">
+                                  + lenin_1.ol
+                                </div>
+                                <div class="file added">
+                                  + stroim.ol
+                                </div>
+                                <div class="file added">
+                                  + lenin_2.ol
+                                </div>
+                                <div class="file added">
+                                  + roundelay_3.ol
+                                </div>
+                                <div class="file added">
+                                  + lenin_3.ol
+                                </div>
+                                <div class="file added">
+                                  + roundelay_2.ol
+                                </div>
+                                <div class="file added">
+                                  + roundelay_1.ol
+                                </div>
+                                <div class="file added">
+                                  + airplane_2.ol
+                                </div>
+                                <div class="file added">
+                                  + friends.ol
+                                </div>
+                                <div class="file added">
+                                  + airplane_3.ol
+                                </div>
+                                <div class="file added">
+                                  + airplane_1.ol
+                                </div>
+                              </details>
+                              <details class="directory" open>
+                                <summary class="name">leaves_maple</summary>
+                                <div class="path">modassets/assets/customitems/models/blocks/decals/newDecals/leaves_maple</div>
+                                <div class="file added">
+                                  + leaves_maple.ol
+                                </div>
+                                <div class="file added">
+                                  + leaves_maple_with_junk.ol
+                                </div>
+                              </details>
+                              <details class="directory" open>
+                                <summary class="name">markings_decals_2</summary>
+                                <div class="path">modassets/assets/customitems/models/blocks/decals/newDecals/markings_decals_2</div>
+                                <div class="file added">
+                                  + arrow_1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + markings_decal_2_atlas.ol
+                                </div>
+                                <div class="file added">
+                                  + arrow_2.mcsb
+                                </div>
+                                <div class="file added">
+                                  + dangerous_area.mcsb
+                                </div>
+                                <div class="file added">
+                                  + to_the_shelter.mcsb
+                                </div>
+                                <div class="file added">
+                                  + line_dashed.mcsb
+                                </div>
+                              </details>
+                              <details class="directory" open>
+                                <summary class="name">paper_litter</summary>
+                                <div class="path">modassets/assets/customitems/models/blocks/decals/newDecals/paper_litter</div>
+                                <div class="file added">
+                                  + paper_litter_small_5.ol
+                                </div>
+                                <div class="file added">
+                                  + paper_litter_cardboard_1.ol
+                                </div>
+                                <div class="file added">
+                                  + paper_litter_3.ol
+                                </div>
+                                <div class="file added">
+                                  + paper_litter_1.ol
+                                </div>
+                                <div class="file added">
+                                  + paper_litter_cardboard_2.ol
+                                </div>
+                                <div class="file added">
+                                  + paper_litter_small_2.ol
+                                </div>
+                                <div class="file added">
+                                  + paper_litter_small_1.ol
+                                </div>
+                                <div class="file added">
+                                  + paper_litter_small_3.ol
+                                </div>
+                                <div class="file added">
+                                  + paper_litter_small_4.ol
+                                </div>
+                                <div class="file added">
+                                  + paper_litter_2.ol
+                                </div>
+                              </details>
+                          </details>
+                      </details>
+                  </details>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">effects</summary>
+              <details class="directory" open>
+                <summary class="name">models</summary>
+                <div class="path">modassets/assets/effects/models</div>
+                <div class="file modified">
+                  ~ model_list.pack
+                </div>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">gloomycore</summary>
+              <details class="directory" open>
+                <summary class="name">lang</summary>
+                <div class="path">modassets/assets/gloomycore/lang</div>
+                <div class="file modified">
+                  ~ es.lang
+                </div>
+                <div class="file modified">
+                  ~ ru.lang
+                </div>
+                <div class="file modified">
+                  ~ en.lang
+                </div>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">highpoly</summary>
+              <details class="directory" open>
+                <summary class="name">character</summary>
+                  <details class="directory" open>
+                    <summary class="name">animations</summary>
+                    <div class="path">modassets/assets/highpoly/character/animations</div>
+                    <div class="file modified">
+                      ~ pack.mcal
+                    </div>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">animationspov</summary>
+                    <div class="path">modassets/assets/highpoly/character/animationspov</div>
+                    <div class="file modified">
+                      ~ pack.mcal
+                    </div>
+                  </details>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">pda</summary>
+              <details class="directory" open>
+                <summary class="name">map</summary>
+                <div class="path">modassets/assets/pda/map</div>
+                <div class="file modified">
+                  ~ r.7.1.ol
+                </div>
+                <div class="file modified">
+                  ~ r.8.-1.ol
+                </div>
+                <div class="file modified">
+                  ~ r.13.-7.ol
+                </div>
+                <div class="file modified">
+                  ~ r.-19.3.ol
+                </div>
+                <div class="file modified">
+                  ~ r.-3.0.ol
+                </div>
+                <div class="file modified">
+                  ~ r.6.0.ol
+                </div>
+                <div class="file modified">
+                  ~ r.10.6.ol
+                </div>
+                <div class="file modified">
+                  ~ r.8.0.ol
+                </div>
+                <div class="file modified">
+                  ~ r.-3.-1.ol
+                </div>
+                <div class="file modified">
+                  ~ r.-7.1.ol
+                </div>
+                <div class="file modified">
+                  ~ r.1.-9.ol
+                </div>
+                <div class="file modified">
+                  ~ r.9.-9.ol
+                </div>
+                <div class="file modified">
+                  ~ r.-2.-2.ol
+                </div>
+                <div class="file modified">
+                  ~ r.10.7.ol
+                </div>
+                <div class="file modified">
+                  ~ r.-10.6.ol
+                </div>
+                <div class="file modified">
+                  ~ r.7.-5.ol
+                </div>
+                <div class="file modified">
+                  ~ r.9.-2.ol
+                </div>
+                <div class="file modified">
+                  ~ r.-7.-4.ol
+                </div>
+                <div class="file modified">
+                  ~ r.-15.4.ol
+                </div>
+                <div class="file modified">
+                  ~ r.-2.0.ol
+                </div>
+                <div class="file modified">
+                  ~ r.-20.6.ol
+                </div>
+                <div class="file modified">
+                  ~ r.8.-2.ol
+                </div>
+                <div class="file modified">
+                  ~ r.-18.3.ol
+                </div>
+                <div class="file modified">
+                  ~ r.7.0.ol
+                </div>
+                <div class="file modified">
+                  ~ r.7.-2.ol
+                </div>
+                <div class="file modified">
+                  ~ r.15.6.ol
+                </div>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">shop</summary>
+              <details class="directory" open>
+                <summary class="name">sound</summary>
+                  <details class="directory" open>
+                    <summary class="name">cases</summary>
+                    <div class="path">modassets/assets/shop/sound/cases</div>
+                    <div class="file modified">
+                      ~ drop_case_woodinside.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ pered_case_drop_inside.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ case_usual_spring25_drop.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ exclusive_gear_spring25_drop.ogg
+                    </div>
+                  </details>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">stalcraft</summary>
+              <details class="directory" open>
+                <summary class="name">ctmpatcher</summary>
+                  <details class="directory" open>
+                    <summary class="name">ctm</summary>
+                      <details class="directory" open>
+                        <summary class="name">concrete_plates_3615</summary>
+                        <div class="path">modassets/assets/stalcraft/ctmpatcher/ctm/concrete_plates_3615</div>
+                        <div class="file added">
+                          + concrete_plates_3615.properties
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">plywood</summary>
+                        <div class="path">modassets/assets/stalcraft/ctmpatcher/ctm/plywood</div>
+                        <div class="file added">
+                          + plywood.properties
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">sand_river</summary>
+                        <div class="path">modassets/assets/stalcraft/ctmpatcher/ctm/sand_river</div>
+                        <div class="file added">
+                          + sand_river.properties
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">tiles_3571</summary>
+                        <div class="path">modassets/assets/stalcraft/ctmpatcher/ctm/tiles_3571</div>
+                        <div class="file added">
+                          + tiles_3571.properties
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">tiles_3581</summary>
+                        <div class="path">modassets/assets/stalcraft/ctmpatcher/ctm/tiles_3581</div>
+                        <div class="file added">
+                          + tiles_3581.properties
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">tiles_mortar</summary>
+                        <div class="path">modassets/assets/stalcraft/ctmpatcher/ctm/tiles_mortar</div>
+                        <div class="file added">
+                          + tiles_mortar.properties
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">tiles_mortar_dots</summary>
+                        <div class="path">modassets/assets/stalcraft/ctmpatcher/ctm/tiles_mortar_dots</div>
+                        <div class="file added">
+                          + tiles_mortar_dots.properties
+                        </div>
+                      </details>
+                  </details>
+              </details>
+              <details class="directory" open>
+                <summary class="name">textures</summary>
+                <div class="path">modassets/assets/stalcraft/textures</div>
+                <div class="file modified">
+                  ~ blockMap.ta
+                </div>
+                <div class="file modified">
+                  ~ blockMap.texarr
+                </div>
+                <div class="file added">
+                  + hrblockMap.texarr
+                </div>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">stalker</summary>
+            <div class="path">modassets/assets/stalker</div>
+            <div class="file modified">
+              ~ itemnames.dat
+            </div>
+              <details class="directory" open>
+                <summary class="name">lang</summary>
+                <div class="path">modassets/assets/stalker/lang</div>
+                <div class="file modified">
+                  ~ en.lang
+                </div>
+                <div class="file modified">
+                  ~ es.lang
+                </div>
+                <div class="file modified">
+                  ~ ru.lang
+                </div>
+              </details>
+              <details class="directory" open>
+                <summary class="name">models</summary>
+                  <details class="directory" open>
+                    <summary class="name">armor</summary>
+                      <details class="directory" open>
+                        <summary class="name">albatros_s</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/albatros_s</div>
+                        <div class="file added">
+                          + missioner_diff.ol
+                        </div>
+                        <div class="file added">
+                          + covenant_diff.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">ark</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/ark</div>
+                        <div class="file added">
+                          + ark.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">investigator</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/investigator</div>
+                        <div class="file added">
+                          + investigator_diff.ol
+                        </div>
+                        <div class="file added">
+                          + investigator.mcsb
+                        </div>
+                        <div class="file added">
+                          + duty_diff.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">missioner</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/missioner</div>
+                        <div class="file added">
+                          + missioner.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">mule</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/mule</div>
+                        <div class="file added">
+                          + prometheus_diff.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">navigator</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/navigator</div>
+                        <div class="file added">
+                          + navigator.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">orion</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/orion</div>
+                        <div class="file added">
+                          + orion_hands.mcsb
+                        </div>
+                        <div class="file added">
+                          + atlas_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + rigel_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + rigel_freedom_diff.ol
+                        </div>
+                        <div class="file added">
+                          + rigel_diff.ol
+                        </div>
+                        <div class="file added">
+                          + orion.mcsb
+                        </div>
+                        <div class="file added">
+                          + atlas_diff.ol
+                        </div>
+                        <div class="file added">
+                          + atlas_freedom_diff.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">prometheus</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/prometheus</div>
+                        <div class="file added">
+                          + prometheus.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">ronin</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/ronin</div>
+                        <div class="file added">
+                          + ronin.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">templar</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/templar</div>
+                        <div class="file added">
+                          + templar.mcsb
+                        </div>
+                      </details>
+                  </details>
+              </details>
+              <details class="directory" open>
+                <summary class="name">slices</summary>
+                <div class="path">modassets/assets/stalker/slices</div>
+                <div class="file added">
+                  + battlefields.mcws
+                </div>
+                <div class="file modified">
+                  ~ savezone_td.mcws
+                </div>
+                <div class="file modified">
+                  ~ covenant.mcws
+                </div>
+                <div class="file modified">
+                  ~ lodochnaya.mcws
+                </div>
+                <div class="file modified">
+                  ~ north_factions_block.mcws
+                </div>
+                <div class="file modified">
+                  ~ csky.mcws
+                </div>
+                <div class="file modified">
+                  ~ rostok.mcws
+                </div>
+                <div class="file modified">
+                  ~ garage.mcws
+                </div>
+                <div class="file modified">
+                  ~ merc.mcws
+                </div>
+                <div class="file modified">
+                  ~ duty.mcws
+                </div>
+                <div class="file modified">
+                  ~ freedom.mcws
+                </div>
+                <div class="file modified">
+                  ~ foton2.mcws
+                </div>
+                <div class="file modified">
+                  ~ savezone_agro.mcws
+                </div>
+              </details>
+              <details class="directory" open>
+                <summary class="name">sound</summary>
+                  <details class="directory" open>
+                    <summary class="name">interface</summary>
+                      <details class="directory" open>
+                        <summary class="name">inside</summary>
+                        <div class="path">modassets/assets/stalker/sound/interface/inside</div>
+                        <div class="file deleted">
+                          - CompleteTaskSound_1.ogg
+                        </div>
+                        <div class="file deleted">
+                          - CompleteTaskSound_2.ogg
+                        </div>
+                        <div class="file deleted">
+                          - CompleteTaskSound_3.ogg
+                        </div>
+                      </details>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">sbattlepass</summary>
+                    <div class="path">modassets/assets/stalker/sound/sbattlepass</div>
+                    <div class="file added">
+                      + challenge_reward_hard.ogg
+                    </div>
+                    <div class="file added">
+                      + challenge_reward_medium.ogg
+                    </div>
+                    <div class="file added">
+                      + challenge_reward_easy.ogg
+                    </div>
+                  </details>
+              </details>
+              <details class="directory" open>
+                <summary class="name">stream</summary>
+                <div class="path">modassets/assets/stalker/stream</div>
+                <div class="file modified">
+                  ~ Main Menu Background.ogg
+                </div>
+              </details>
+              <details class="directory" open>
+                <summary class="name">textures</summary>
+                  <details class="directory" open>
+                    <summary class="name">items</summary>
+                      <details class="directory" open>
+                        <summary class="name">armor</summary>
+                        <div class="path">modassets/assets/stalker/textures/items/armor</div>
+                        <div class="file added">
+                          + prometheus.ol
+                        </div>
+                        <div class="file added">
+                          + navigator.ol
+                        </div>
+                        <div class="file added">
+                          + ronin.ol
+                        </div>
+                        <div class="file added">
+                          + ark.ol
+                        </div>
+                        <div class="file added">
+                          + investigator.ol
+                        </div>
+                        <div class="file added">
+                          + templar.ol
+                        </div>
+                        <div class="file added">
+                          + orion.ol
+                        </div>
+                        <div class="file added">
+                          + missioner.ol
+                        </div>
+                      </details>
+                  </details>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">weapons</summary>
+              <details class="directory" open>
+                <summary class="name">sound</summary>
+                  <details class="directory" open>
+                    <summary class="name">p320</summary>
+                    <div class="path">modassets/assets/weapons/sound/p320</div>
+                    <div class="file added">
+                      + p320_inspect_three_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + p320_inspect_two.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ p320_reload_out.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ p320_reload_bolt.ogg
+                    </div>
+                    <div class="file added">
+                      + p320_inspect_two_empty.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ p320_reload_in.ogg
+                    </div>
+                    <div class="file added">
+                      + p320_inspect_four_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + p320_inspect_one.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ p320_draw.ogg
+                    </div>
+                    <div class="file added">
+                      + p320_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + p320_reload_in_empty.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ p320_holster.ogg
+                    </div>
+                    <div class="file added">
+                      + p320_inspect_three.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ p320_draw_first_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + p320_jam_fix.ogg
+                    </div>
+                    <div class="file added">
+                      + p320_inspect_one_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + p320_inspect_four.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ p320_draw_first.ogg
+                    </div>
+                    <div class="file added">
+                      + p320_reload_out_empty.ogg
+                    </div>
+                    <div class="file deleted">
+                      - p320_reload_in_quick.ogg
+                    </div>
+                    <div class="file deleted">
+                      - p320_inspect.ogg
+                    </div>
+                    <div class="file deleted">
+                      - p320_reload_out_quick.ogg
+                    </div>
+                  </details>
+              </details>
+              <details class="directory" open>
+                <summary class="name">textures</summary>
+                  <details class="directory" open>
+                    <summary class="name">items</summary>
+                      <details class="directory" open>
+                        <summary class="name">weapons</summary>
+                        <div class="path">modassets/assets/weapons/textures/items/weapons</div>
+                        <div class="file modified">
+                          ~ det2.ol
+                        </div>
+                        <div class="file modified">
+                          ~ det1.ol
+                        </div>
+                        <div class="file modified">
+                          ~ det3.ol
+                        </div>
+                      </details>
+                  </details>
+              </details>
+          </details>
+      </details>
+  </details>
+  <details class="directory" open>
+    <summary class="name">win64</summary>
+      <details class="directory" open>
+        <summary class="name">java</summary>
+        <div class="path">win64/java</div>
+        <div class="file modified">
+          ~ release
+        </div>
+          <details class="directory" open>
+            <summary class="name">bin</summary>
+              <details class="directory" open>
+                <summary class="name">server</summary>
+                <div class="path">win64/java/bin/server</div>
+                <div class="file modified">
+                  ~ jvm.dll
+                </div>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">lib</summary>
+            <div class="path">win64/java/lib</div>
+            <div class="file modified">
+              ~ modules
+            </div>
+          </details>
+      </details>
+  </details>
+</div>
+    <h2>Изменения в файле локализации</h2>
+    <div class="lang-changes"><div class="diff-line added">item.arm.missioner.description = Собранная ремесленниками Черного Рынка броня позволяет воинам «Завета» нести страдание, не забывая заботиться о бренном теле. Идеальное сочетание духовного и физического, возвышенного и мирского, высокой подвижности и хорошей защиты.</div><div class="diff-line added">item.arm.templar.description = Бронекостюм «Храмовник» — само воплощение идеалов «Завета». Стойкий, как их убеждения, и непоколебимый, как вера, он создан, чтобы обеспечить выживание бойцов в пылу священной войны и нести страдание неверным..</div><div class="diff-line added">item.arm.templar.name = Бронекостюм «Храмовник»</div><div class="diff-line added">item.arm.navigator.name = Комбинезон «Навигатор»</div><div class="diff-line added">item.arm.ronin.description = RS-41 «Ronin» — бронекостюм, созданный специально под нужды наемников. Он предназначен для опытных бойцов, приоритетом которых является участие в огневых контактах. Удерживать позиции в напряженных перестрелках или прорываться через перекрестный огонь — наемники в этой броне готовы к любому приказу.</div><div class="diff-line modified">item.misc.ammonium_chloride.additional_stats_tip = Вещество на основе аммиака, способное привести в чувство человека.</div><div class="diff-line modified">item.16365.description = После мутации увеличенный глаз хрюши приобрел ряд свойств, самым полезным из которых является способность к регенерации хрусталика. Детали этого механизма точно неизвестны, но это открытие обещает революцию в медицине. Вы можете внести свой вклад в науку, продав глаз хрюши ученым для исследований.</div><div class="diff-line modified">item.food.peas_with_meat.additional_stats_tip = Любимое блюдо любого бати!</div><div class="diff-line added">item.att.temp_model_armor.additional_stats_tip = Данный костюм имеет ВРЕМЕННУЮ модель, которая будет заменена.</div><div class="diff-line added">item.arm.prometheus.name = Бронекостюм «Прометей»</div><div class="diff-line added">settlement.id.battlefields.default_desc = Для закаленных в боях ветеранов Противостояния.</div><div class="diff-line modified">item.filler.boss_limansk_5.additional_stats_tip = Анализы ученых показывают, что сердца некоторых особо мощных мутантов Любеча содержат зашкаливающее количество частиц загадочного металла Лимба. Над разгадкой этой тайны бьются лучшие умы!</div><div class="diff-line added">item.arm.orion.name = Комбинезон «Орион»</div><div class="diff-line added">cnps.faction.settlement_battlefields.name = Сессионные бои</div><div class="diff-line modified">item.food.millet_with_meat.additional_stats_tip = Простая и добротная каша с любимой тушенкой.</div><div class="diff-line added">item.arm.templar.short_name = «Храмовник»</div><div class="diff-line added">item.arm.investigator.description = Пускай «рубежники» специализируются на позиционных боях, этот бронекостюм стал очень популярен среди служащих разведрот, за что и получил свое название. Бойцы «Рубежа» утверждают, что высокая мобильность костюма позволяет не только быстрее добраться до цели, но и догонять самых быстрых «зорек», которые используют «Гончий».</div><div class="diff-line added">settlement.id.battlefields.title = Сессионные бои</div><div class="diff-line modified">item.16396.description = Бестия может с легкостью рассечь своими когтями металлическую пластину, поэтому молекулярная структура ногтевых тканей мутанта представляет исключительный интерес для ученых.</div><div class="diff-line modified">go.hideout_kitchen_chromatographic_equipment.additional_stats_tip = Устройства, используемые для разделения, идентификации и анализа компонентов сложных смесей.</div><div class="diff-line added">item.arm.missioner.name = Экзокостюм «Миссионер»</div><div class="diff-line added">item.arm.ark.description = Новейшая военная разработка, предназначенная для ведения операций в наиболее агрессивной среде. Как говорят сами «рубежники», костюм был полной туфтой, пока не попал в руки к умельцам группировки по внутренним каналам. Модифицированный ремесленниками «Рубежа» научный костюм ничем не уступает даже лучшим работам НИИ-7, что должно позволить бойцам добраться до самых труднодоступных мест, где притаилась зараза Зоны.</div><div class="diff-line added">cnps.availability.desc.trader.battlefields.level = Уровень {level}</div><div class="diff-line added">item.arm.ronin.name = Бронекостюм «Ронин»</div><div class="diff-line added">item.arm.missioner.short_name = «Миссионер»</div><div class="diff-line added">item.arm.investigator.name = Экзоброня «Следак»</div><div class="diff-line added">item.arm.orion.description = Предложенный младшим инженером НИИ-7 дизайн, ставший основой «Ориона», очень понравился не только членам научного крыла «Зари», но и многим бойцам группировки. Выполненный по последнему слову техники костюм призван обеспечить доступ даже в самые опасные места Зоны – ведь наука должна стремиться ввысь!</div><div class="diff-line added">item.arm.prometheus.description = Боевое крыло очень долго убеждало Чацкого выделить деньги на специальный бронекостюм, предназначенный конкретно для ведения боев. «Прометей», ставший итогом этих просьб, по словам многих «зорек», является лучшей работой инженеров, причастных к научному крылу группировки.</div><div class="diff-line added">item.arm.ark.name = Комбинезон «Ковчег»</div><div class="diff-line added">item.arm.investigator.short_name = «Следак»</div><div class="diff-line modified">item.misc.multitool.additional_stats_tip = Универсальный инструмент на все случаи жизни. И колбасу нарезать, и мутанта освежевать!</div><div class="diff-line added">item.arm.navigator.description = RS-152 «Navigator» призван помочь наемникам в заданиях на самых опасных и неизведанных участках Зоны. Как говорит Мюллер: «Аномалии и радиация не являются уважительной причиной для провала миссии», а значит, лучше заранее позаботиться о том, чтобы свести их воздействие к минимуму.</div><div class="diff-line added">item.arm.ronin.short_name = «Ронин»</div><div class="diff-line modified">go.hideout_kitchen_sterilization_system.additional_stats_tip = Комплекс приспособлений для термической обработки посуды или инструментов.</div><div class="diff-line added">item.arm.prometheus.short_name = «Прометей»</div><div class="diff-line deleted">item.arm.peresvet.short_name = Комбинезон «Пересвет»</div></div>
+    <div class="footer">
+        <a href="https://github.com/BuildersSC/Krevetka" target="_blank">
+            <img src="icon.png" alt="Krevetka Logo">
+            <span>This HTML site generated by Krevetka.</span>
+        </a>
+    </div>
+</body>
+</html>
