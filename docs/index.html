@@ -1,0 +1,3489 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Патчноут</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Изменения в файлах ассетов игры" />
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #c5c5c5;
+            font-family: monospace;
+            padding: 16px;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('pattern_anti_spectrum.png');
+            background-repeat: repeat;
+            background-size: 200px;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .changes {
+            width: 100%;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+        .directory,
+        .file,
+        .path {
+            margin-left: 16px;
+            width: 100%;
+            position: relative;
+        }
+        .path {
+            opacity: 0.5;
+        }
+        .directory > .name {
+            font-size: 16px;
+        }
+        .added { color: #a0d468; }
+        .deleted { color: #ff6b6b; }
+        .modified { color: #ffd700; }
+        .decrypted-image {
+            margin: 8px 0;
+            border: 1px solid #444;
+            background-color: #2a2a2a;
+            padding: 4px;
+            border-radius: 4px;
+        }
+        .lang-changes {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .diff-line {
+            font-family: 'Consolas', monospace;
+            padding: 4px 8px;
+            margin: 2px 0;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .no-changes {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-style: italic;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid #333;
+            position: relative;
+            z-index: 1;
+        }
+        .footer a {
+            color: #c5c5c5;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #8a9cff;
+        }
+        .footer img {
+            width: 24px;
+            height: 24px;
+        }
+        h3 a {
+            color: #8a9cff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        h3 a:hover {
+            color: #b39ddb;
+        }
+    </style>
+</head>
+<body>
+    <h1>ChangeLog 02.04.2025</h1>
+    <h2>Изменения файловой структуры ассетов игры</h2>
+    <h3>Источник: <a href="https://github.com/Art3mLapa" target="_blank">Krevetka</a></h3>
+    <div class="changes">
+      <details class="directory" open>
+    <summary class="name">modassets</summary>
+      <details class="directory" open>
+        <summary class="name">assets</summary>
+          <details class="directory" open>
+            <summary class="name">bundle</summary>
+            <div class="path">modassets/assets/bundle</div>
+            <div class="file modified">
+              ~ texmeta.xeon
+            </div>
+            <div class="file modified">
+              ~ configs.xeon
+            </div>
+            <div class="file modified">
+              ~ anim_casts.xeon
+            </div>
+            <div class="file modified">
+              ~ boxes.xeon
+            </div>
+            <div class="file modified">
+              ~ materials.xeon
+            </div>
+            <div class="file modified">
+              ~ effects.xeon
+            </div>
+            <div class="file modified">
+              ~ shaders.xeon
+            </div>
+            <div class="file modified">
+              ~ icons.xeon
+            </div>
+            <div class="file modified">
+              ~ small_images.xeon
+            </div>
+          </details>
+          <details class="directory" open>
+            <summary class="name">customitems</summary>
+              <details class="directory" open>
+                <summary class="name">models</summary>
+                  <details class="directory" open>
+                    <summary class="name">blocks</summary>
+                      <details class="directory" open>
+                        <summary class="name">decors</summary>
+                          <details class="directory" open>
+                            <summary class="name">wpn</summary>
+                              <details class="directory" open>
+                                <summary class="name">b</summary>
+                                <div class="path">modassets/assets/customitems/models/blocks/decors/wpn/b</div>
+                                <div class="file added">
+                                  + 6p62_lod1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + psa201_lod1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + psa202.mcsb
+                                </div>
+                                <div class="file added">
+                                  + groza14_a1_lod1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + akm9_lod1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + highestpower_lod1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + aek971_lod1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + smesson_lod1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + psa202_lod1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + smesson.mcsb
+                                </div>
+                                <div class="file added">
+                                  + asmva.mcsb
+                                </div>
+                                <div class="file added">
+                                  + psa203_lod1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + akm9.mcsb
+                                </div>
+                                <div class="file added">
+                                  + gornostay_lod1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + aek762_lod1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + highestpower.mcsb
+                                </div>
+                                <div class="file added">
+                                  + psa203.mcsb
+                                </div>
+                                <div class="file added">
+                                  + psa201.mcsb
+                                </div>
+                                <div class="file added">
+                                  + 6p62.mcsb
+                                </div>
+                                <div class="file added">
+                                  + deagle_lod1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + asmva_lod1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + aek762.mcsb
+                                </div>
+                                <div class="file added">
+                                  + aek971.mcsb
+                                </div>
+                                <div class="file added">
+                                  + groza14_a1.mcsb
+                                </div>
+                                <div class="file added">
+                                  + deagle.mcsb
+                                </div>
+                                <div class="file added">
+                                  + gornostay.mcsb
+                                </div>
+                              </details>
+                          </details>
+                      </details>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">items</summary>
+                      <details class="directory" open>
+                        <summary class="name">barter</summary>
+                        <div class="path">modassets/assets/customitems/models/items/barter</div>
+                        <div class="file added">
+                          + fighter_coin_spek.ol
+                        </div>
+                        <div class="file added">
+                          + fighter_coin_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + fighter_coin_diff.ol
+                        </div>
+                        <div class="file added">
+                          + fighter_coin.mcsb
+                        </div>
+                      </details>
+                  </details>
+              </details>
+              <details class="directory" open>
+                <summary class="name">textures</summary>
+                  <details class="directory" open>
+                    <summary class="name">items</summary>
+                      <details class="directory" open>
+                        <summary class="name">barter</summary>
+                        <div class="path">modassets/assets/customitems/textures/items/barter</div>
+                        <div class="file added">
+                          + battlefields.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">schemes</summary>
+                        <div class="path">modassets/assets/customitems/textures/items/schemes</div>
+                        <div class="file deleted">
+                          - aksu_mod_4.ol
+                        </div>
+                        <div class="file deleted">
+                          - m4_mod_1.ol
+                        </div>
+                        <div class="file deleted">
+                          - aksu_mod_1.ol
+                        </div>
+                        <div class="file deleted">
+                          - aksu_mod_3.ol
+                        </div>
+                        <div class="file deleted">
+                          - mp5_mod_4.ol
+                        </div>
+                        <div class="file deleted">
+                          - m4_mod_4.ol
+                        </div>
+                        <div class="file deleted">
+                          - m4_mod_2.ol
+                        </div>
+                        <div class="file deleted">
+                          - pm_mod_3.ol
+                        </div>
+                        <div class="file deleted">
+                          - m4_mod_3.ol
+                        </div>
+                        <div class="file deleted">
+                          - aksu_mod_2.ol
+                        </div>
+                        <div class="file deleted">
+                          - pm_mod_4.ol
+                        </div>
+                      </details>
+                  </details>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">customnpcs</summary>
+              <details class="directory" open>
+                <summary class="name">models</summary>
+                <div class="path">modassets/assets/customnpcs/models</div>
+                <div class="file added">
+                  + slime_model.mcsb
+                </div>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">effects</summary>
+              <details class="directory" open>
+                <summary class="name">models</summary>
+                <div class="path">modassets/assets/effects/models</div>
+                <div class="file modified">
+                  ~ model_list.pack
+                </div>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">gloomycore</summary>
+              <details class="directory" open>
+                <summary class="name">banks</summary>
+                <div class="path">modassets/assets/gloomycore/banks</div>
+                <div class="file modified">
+                  ~ Master.bank
+                </div>
+                <div class="file modified">
+                  ~ lipa.bank
+                </div>
+                <div class="file modified">
+                  ~ Master.strings.bank
+                </div>
+                <div class="file modified">
+                  ~ 2_lipa.bank
+                </div>
+              </details>
+              <details class="directory" open>
+                <summary class="name">fonts</summary>
+                  <details class="directory" open>
+                    <summary class="name">sdf</summary>
+                    <div class="path">modassets/assets/gloomycore/fonts/sdf</div>
+                    <div class="file modified">
+                      ~ tahoma.fnt
+                    </div>
+                    <div class="file added">
+                      + tahoma.ol
+                    </div>
+                    <div class="file deleted">
+                      - tahoma.mic
+                    </div>
+                  </details>
+              </details>
+              <details class="directory" open>
+                <summary class="name">lang</summary>
+                <div class="path">modassets/assets/gloomycore/lang</div>
+                <div class="file modified">
+                  ~ es.lang
+                </div>
+                <div class="file modified">
+                  ~ ru.lang
+                </div>
+                <div class="file modified">
+                  ~ en.lang
+                </div>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">highpoly</summary>
+              <details class="directory" open>
+                <summary class="name">animations</summary>
+                <div class="path">modassets/assets/highpoly/animations</div>
+                <div class="file added">
+                  + wpn_sa20_rhythm.mcvd
+                </div>
+                <div class="file added">
+                  + wpn_fp_akm9.mcvd
+                </div>
+                <div class="file added">
+                  + wpn_fp_oc14-a1.mcvd
+                </div>
+                <div class="file added">
+                  + wpn_fp_gornostay.mcvd
+                </div>
+                <div class="file added">
+                  + wpn_fp_aek973.mcvd
+                </div>
+                <div class="file added">
+                  + wpn_fp_aek762.mcvd
+                </div>
+                <div class="file added">
+                  + wpn_fp_hp_9x39.mcvd
+                </div>
+                <div class="file added">
+                  + wpn_fp_sa20_pulse.mcvd
+                </div>
+                <div class="file added">
+                  + wpn_sa20_takt.mcvd
+                </div>
+                <div class="file added">
+                  + wpn_fp_oc14-a1gp.mcvd
+                </div>
+                <div class="file added">
+                  + wpn_fp_6p62.mcvd
+                </div>
+                <div class="file added">
+                  + wpn_fp_asm_val.mcvd
+                </div>
+              </details>
+              <details class="directory" open>
+                <summary class="name">character</summary>
+                  <details class="directory" open>
+                    <summary class="name">animations</summary>
+                    <div class="path">modassets/assets/highpoly/character/animations</div>
+                    <div class="file modified">
+                      ~ pack.mcal
+                    </div>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">animationspov</summary>
+                    <div class="path">modassets/assets/highpoly/character/animationspov</div>
+                    <div class="file modified">
+                      ~ pack.mcal
+                    </div>
+                  </details>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">pda</summary>
+              <details class="directory" open>
+                <summary class="name">map-kolizei</summary>
+                <div class="path">modassets/assets/pda/map-kolizei</div>
+                <div class="file added">
+                  + r.-2.-2.ol
+                </div>
+              </details>
+              <details class="directory" open>
+                <summary class="name">map-sovetpunk</summary>
+                <div class="path">modassets/assets/pda/map-sovetpunk</div>
+                <div class="file added">
+                  + r.13.-11.ol
+                </div>
+                <div class="file added">
+                  + r.13.-10.ol
+                </div>
+              </details>
+              <details class="directory" open>
+                <summary class="name">textures</summary>
+                  <details class="directory" open>
+                    <summary class="name">gui</summary>
+                    <div class="path">modassets/assets/pda/textures/gui</div>
+                    <div class="file added">
+                      + territory_pattern.ol
+                    </div>
+                    <div class="file added">
+                      + line.ol
+                    </div>
+                  </details>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">stalcraft</summary>
+              <details class="directory" open>
+                <summary class="name">sound</summary>
+                  <details class="directory" open>
+                    <summary class="name">im</summary>
+                    <div class="path">modassets/assets/stalcraft/sound/im</div>
+                    <div class="file added">
+                      + stand_to_crouch2.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_climb1.ogg
+                    </div>
+                    <div class="file added">
+                      + ladder8.ogg
+                    </div>
+                    <div class="file added">
+                      + climb5.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ climb2.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_jump5.ogg
+                    </div>
+                    <div class="file added">
+                      + prone_to_stand10.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ ladder6.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_crouch8.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ prone2.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_prone1.ogg
+                    </div>
+                    <div class="file added">
+                      + jump_to_stand13.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_prone2.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ prone3.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_jump6.ogg
+                    </div>
+                    <div class="file added">
+                      + prone_to_stand7.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_prone9.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_crouch9.ogg
+                    </div>
+                    <div class="file added">
+                      + prone_to_stand8.ogg
+                    </div>
+                    <div class="file added">
+                      + jump_to_stand2.ogg
+                    </div>
+                    <div class="file added">
+                      + ladder11.ogg
+                    </div>
+                    <div class="file added">
+                      + crouch_to_stand2.ogg
+                    </div>
+                    <div class="file added">
+                      + crouch_to_stand3.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_climb8.ogg
+                    </div>
+                    <div class="file added">
+                      + crouch_to_stand4.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_crouch5.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_climb5.ogg
+                    </div>
+                    <div class="file added">
+                      + ladder10.ogg
+                    </div>
+                    <div class="file added">
+                      + jump_to_stand5.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_jump2.ogg
+                    </div>
+                    <div class="file added">
+                      + crouch_to_stand6.ogg
+                    </div>
+                    <div class="file added">
+                      + climb_to_climb_on3.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_jump3.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_jump7.ogg
+                    </div>
+                    <div class="file added">
+                      + climb15.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_climb2.ogg
+                    </div>
+                    <div class="file added">
+                      + climb9.ogg
+                    </div>
+                    <div class="file added">
+                      + crouch_to_stand8.ogg
+                    </div>
+                    <div class="file added">
+                      + jump_to_stand9.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ climb3.ogg
+                    </div>
+                    <div class="file added">
+                      + prone14.ogg
+                    </div>
+                    <div class="file added">
+                      + prone12.ogg
+                    </div>
+                    <div class="file added">
+                      + climb11.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_crouch7.ogg
+                    </div>
+                    <div class="file added">
+                      + climb8.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_climb6.ogg
+                    </div>
+                    <div class="file added">
+                      + ladder14.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_jump10.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ prone1.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_prone3.ogg
+                    </div>
+                    <div class="file added">
+                      + prone6.ogg
+                    </div>
+                    <div class="file added">
+                      + prone9.ogg
+                    </div>
+                    <div class="file added">
+                      + climb_to_climb_on1.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ ladder4.ogg
+                    </div>
+                    <div class="file added">
+                      + climb10.ogg
+                    </div>
+                    <div class="file added">
+                      + climb_to_climb_on7.ogg
+                    </div>
+                    <div class="file added">
+                      + jump_to_stand6.ogg
+                    </div>
+                    <div class="file added">
+                      + prone11.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_prone5.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_climb3.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_prone6.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_prone10.ogg
+                    </div>
+                    <div class="file added">
+                      + prone4.ogg
+                    </div>
+                    <div class="file added">
+                      + prone13.ogg
+                    </div>
+                    <div class="file added">
+                      + jump_to_stand8.ogg
+                    </div>
+                    <div class="file added">
+                      + prone_to_stand3.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ ladder5.ogg
+                    </div>
+                    <div class="file added">
+                      + prone_to_stand5.ogg
+                    </div>
+                    <div class="file added">
+                      + climb14.ogg
+                    </div>
+                    <div class="file added">
+                      + climb6.ogg
+                    </div>
+                    <div class="file added">
+                      + ladder15.ogg
+                    </div>
+                    <div class="file added">
+                      + crouch_to_stand1.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_crouch4.ogg
+                    </div>
+                    <div class="file added">
+                      + prone_to_stand4.ogg
+                    </div>
+                    <div class="file added">
+                      + jump_to_stand10.ogg
+                    </div>
+                    <div class="file added">
+                      + ladder9.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ climb4.ogg
+                    </div>
+                    <div class="file added">
+                      + ladder7.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_crouch1.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_jump9.ogg
+                    </div>
+                    <div class="file added">
+                      + climb_to_climb_on6.ogg
+                    </div>
+                    <div class="file added">
+                      + ladder12.ogg
+                    </div>
+                    <div class="file added">
+                      + climb13.ogg
+                    </div>
+                    <div class="file added">
+                      + climb_to_climb_on2.ogg
+                    </div>
+                    <div class="file added">
+                      + climb_to_climb_on9.ogg
+                    </div>
+                    <div class="file added">
+                      + prone8.ogg
+                    </div>
+                    <div class="file added">
+                      + prone10.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_jump8.ogg
+                    </div>
+                    <div class="file added">
+                      + climb12.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ ladder2.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_climb9.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_prone4.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_climb7.ogg
+                    </div>
+                    <div class="file added">
+                      + climb7.ogg
+                    </div>
+                    <div class="file added">
+                      + climb_to_climb_on5.ogg
+                    </div>
+                    <div class="file added">
+                      + prone18.ogg
+                    </div>
+                    <div class="file added">
+                      + prone_to_stand9.ogg
+                    </div>
+                    <div class="file added">
+                      + prone19.ogg
+                    </div>
+                    <div class="file added">
+                      + jump_to_stand7.ogg
+                    </div>
+                    <div class="file added">
+                      + crouch_to_stand5.ogg
+                    </div>
+                    <div class="file added">
+                      + prone_to_stand6.ogg
+                    </div>
+                    <div class="file added">
+                      + prone15.ogg
+                    </div>
+                    <div class="file added">
+                      + jump_to_stand12.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_prone8.ogg
+                    </div>
+                    <div class="file added">
+                      + jump_to_stand4.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ ladder1.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_jump1.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_climb10.ogg
+                    </div>
+                    <div class="file added">
+                      + prone_to_stand2.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ climb1.ogg
+                    </div>
+                    <div class="file added">
+                      + jump_to_stand14.ogg
+                    </div>
+                    <div class="file added">
+                      + ladder13.ogg
+                    </div>
+                    <div class="file added">
+                      + prone20.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_crouch10.ogg
+                    </div>
+                    <div class="file added">
+                      + jump_to_stand3.ogg
+                    </div>
+                    <div class="file added">
+                      + ladder16.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_prone7.ogg
+                    </div>
+                    <div class="file added">
+                      + prone16.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_crouch6.ogg
+                    </div>
+                    <div class="file added">
+                      + crouch_to_stand7.ogg
+                    </div>
+                    <div class="file added">
+                      + climb16.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_jump4.ogg
+                    </div>
+                    <div class="file added">
+                      + jump_to_stand11.ogg
+                    </div>
+                    <div class="file added">
+                      + prone_to_stand1.ogg
+                    </div>
+                    <div class="file added">
+                      + prone5.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_crouch3.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ ladder3.ogg
+                    </div>
+                    <div class="file added">
+                      + climb_to_climb_on4.ogg
+                    </div>
+                    <div class="file added">
+                      + stand_to_climb4.ogg
+                    </div>
+                    <div class="file added">
+                      + climb_to_climb_on8.ogg
+                    </div>
+                    <div class="file added">
+                      + prone7.ogg
+                    </div>
+                    <div class="file added">
+                      + prone17.ogg
+                    </div>
+                    <div class="file deleted">
+                      - no_stamina.ogg
+                    </div>
+                    <div class="file deleted">
+                      - stand_to_crouch.ogg
+                    </div>
+                    <div class="file deleted">
+                      - climb_to_stand.ogg
+                    </div>
+                    <div class="file deleted">
+                      - jump_to_stand.ogg
+                    </div>
+                    <div class="file deleted">
+                      - climb_to_climb_on.ogg
+                    </div>
+                    <div class="file deleted">
+                      - stand_to_prone.ogg
+                    </div>
+                    <div class="file deleted">
+                      - stand_to_climb.ogg
+                    </div>
+                    <div class="file deleted">
+                      - climb_to_climb_over.ogg
+                    </div>
+                    <div class="file deleted">
+                      - crouch_to_stand.ogg
+                    </div>
+                    <div class="file deleted">
+                      - prone_to_stand.ogg
+                    </div>
+                    <div class="file deleted">
+                      - stand_to_jump.ogg
+                    </div>
+                  </details>
+              </details>
+              <details class="directory" open>
+                <summary class="name">textures</summary>
+                <div class="path">modassets/assets/stalcraft/textures</div>
+                <div class="file modified">
+                  ~ blockMap.ta
+                </div>
+                <div class="file modified">
+                  ~ blockMap.texarr
+                </div>
+                <div class="file modified">
+                  ~ hrblockMap.texarr
+                </div>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">stalker</summary>
+              <details class="directory" open>
+                <summary class="name">lang</summary>
+                <div class="path">modassets/assets/stalker/lang</div>
+                <div class="file modified">
+                  ~ en.lang
+                </div>
+                <div class="file modified">
+                  ~ ru.lang
+                </div>
+                <div class="file modified">
+                  ~ es.lang
+                </div>
+              </details>
+              <details class="directory" open>
+                <summary class="name">models</summary>
+                  <details class="directory" open>
+                    <summary class="name">armor</summary>
+                      <details class="directory" open>
+                        <summary class="name">antares</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/antares</div>
+                        <div class="file modified">
+                          ~ antares.mcsb
+                        </div>
+                        <div class="file modified">
+                          ~ antares_split.mcsb
+                        </div>
+                        <div class="file modified">
+                          ~ antares_diff.ol
+                        </div>
+                          <details class="directory" open>
+                            <summary class="name">style_winter25</summary>
+                            <div class="path">modassets/assets/stalker/models/armor/antares/style_winter25</div>
+                            <div class="file added">
+                              + antares_winter25_emi.ol
+                            </div>
+                            <div class="file modified">
+                              ~ antares_winter25_split.mcsb
+                            </div>
+                            <div class="file modified">
+                              ~ antares_winter25.mcsb
+                            </div>
+                            <div class="file modified">
+                              ~ antares_winter25_diff.ol
+                            </div>
+                          </details>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">ao6</summary>
+                          <details class="directory" open>
+                            <summary class="name">style_wintersoldier</summary>
+                            <div class="path">modassets/assets/stalker/models/armor/ao6/style_wintersoldier</div>
+                            <div class="file modified">
+                              ~ ao6_wintersoldier.mcsb
+                            </div>
+                            <div class="file modified">
+                              ~ ao6_wintersoldier_diff.ol
+                            </div>
+                          </details>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">missioner</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/missioner</div>
+                        <div class="file modified">
+                          ~ missioner.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">peresvet</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/peresvet</div>
+                        <div class="file modified">
+                          ~ covenant_diff.ol
+                        </div>
+                        <div class="file modified">
+                          ~ peresvet.mcsb
+                        </div>
+                        <div class="file modified">
+                          ~ peresvet_diff.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">skat10</summary>
+                          <details class="directory" open>
+                            <summary class="name">style_zivcas</summary>
+                            <div class="path">modassets/assets/stalker/models/armor/skat10/style_zivcas</div>
+                            <div class="file modified">
+                              ~ skat10_zivcas.mcsb
+                            </div>
+                          </details>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">templar</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/templar</div>
+                        <div class="file modified">
+                          ~ templar.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">zivcas_commander</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/zivcas_commander</div>
+                        <div class="file modified">
+                          ~ zivcas_commander_player.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">zivcas_fighter</summary>
+                        <div class="path">modassets/assets/stalker/models/armor/zivcas_fighter</div>
+                        <div class="file modified">
+                          ~ zivcas_fighter.mcsb
+                        </div>
+                      </details>
+                  </details>
+              </details>
+              <details class="directory" open>
+                <summary class="name">slices</summary>
+                <div class="path">modassets/assets/stalker/slices</div>
+                <div class="file modified">
+                  ~ covenant.mcws
+                </div>
+                <div class="file modified">
+                  ~ freedom.mcws
+                </div>
+                <div class="file modified">
+                  ~ savezone_agro.mcws
+                </div>
+                <div class="file modified">
+                  ~ foton2.mcws
+                </div>
+                <div class="file modified">
+                  ~ north_factions_block.mcws
+                </div>
+                <div class="file modified">
+                  ~ garage.mcws
+                </div>
+                <div class="file modified">
+                  ~ csky.mcws
+                </div>
+                <div class="file modified">
+                  ~ merc.mcws
+                </div>
+                <div class="file modified">
+                  ~ battlefields.mcws
+                </div>
+                <div class="file modified">
+                  ~ rostok.mcws
+                </div>
+                <div class="file modified">
+                  ~ duty.mcws
+                </div>
+                <div class="file modified">
+                  ~ savezone_td.mcws
+                </div>
+                <div class="file modified">
+                  ~ lodochnaya.mcws
+                </div>
+              </details>
+              <details class="directory" open>
+                <summary class="name">sound</summary>
+                  <details class="directory" open>
+                    <summary class="name">ejection</summary>
+                    <div class="path">modassets/assets/stalker/sound/ejection</div>
+                    <div class="file added">
+                      + alert_emission_deadline_o.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_zz.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_i.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_deadline_d.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_p.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_l.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_u.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_u.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_starting_e.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_x.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_storm_f.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_ending_c.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_g.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_q.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_storm_e.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_r.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_g.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_o.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_p.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_o.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_q.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_ending_a.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_preparation_c.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_starting_f.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_x.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_w.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_s.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_u.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_x.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_preparation_f.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_r.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_s.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_h.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_t.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_t.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_z.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_u.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_zz.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_i.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_deadline_b.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_y.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_z.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_k.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_l.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_r.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_h.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_deadline_c.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_t.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_r.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_t.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_m.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_p.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_n.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_g.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_zz.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_s.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_i.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_k.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_zz.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_storm_b.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_k.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_storm_a.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_i.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_g.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_s.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_preparation_b.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_k.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_r.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_q.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_n.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_l.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_n.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_deadline_f.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_storm_c.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_g.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_preparation_a.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_v.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_x.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_storm_d.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_preparation_e.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_i.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_t.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_z.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_n.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_preparation_d.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_w.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_v.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_w.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_h.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_zz.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_p.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_m.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_m.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_starting_b.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_ending_d.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_l.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_deadline_e.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_y.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_z.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_starting_d.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_m.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_deadline_a.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_x.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_ending_b.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_q.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_o.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_h.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_v.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_v.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_s.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_y.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_v.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_y.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_p.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_m.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_z.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_n.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_w.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_o.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_q.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_deadline_h.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_ending_e.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_u.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_ending_f.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_starting_a.ogg
+                    </div>
+                    <div class="file modified">
+                      ~ alert_emission_starting_c.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_starting_y.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_preparation_l.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_ending_w.ogg
+                    </div>
+                    <div class="file added">
+                      + alert_emission_storm_k.ogg
+                    </div>
+                      <details class="directory" open>
+                        <summary class="name">01pervaya_faza</summary>
+                        <div class="path">modassets/assets/stalker/sound/ejection/01pervaya_faza</div>
+                        <div class="file deleted">
+                          - alert_emission_phase1_3.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase1_2.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase1_6.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase1_4.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase1_1.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase1_5.ogg
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">02vtoraya_faza</summary>
+                        <div class="path">modassets/assets/stalker/sound/ejection/02vtoraya_faza</div>
+                        <div class="file deleted">
+                          - alert_emission_phase2_2.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase2_6.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase2_5.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase2_4.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase2_1.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase2_3.ogg
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">03tretya_faza</summary>
+                        <div class="path">modassets/assets/stalker/sound/ejection/03tretya_faza</div>
+                        <div class="file deleted">
+                          - alert_emission_phase3_5.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase3_7.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase3_11.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase3_3.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase3_12.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase3_10.2.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase3_4.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase3_9.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase3_10.1.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase3_2.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase3_8.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase3_1.ogg
+                        </div>
+                        <div class="file deleted">
+                          - alert_emission_phase3_6.ogg
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">frost_emission</summary>
+                        <div class="path">modassets/assets/stalker/sound/ejection/frost_emission</div>
+                        <div class="file modified">
+                          ~ alert_emission_3_ending_c.ogg
+                        </div>
+                        <div class="file modified">
+                          ~ alert_emission_3_beginning_a.ogg
+                        </div>
+                        <div class="file modified">
+                          ~ alert_emission_3_ending_a.ogg
+                        </div>
+                        <div class="file modified">
+                          ~ alert_emission_3_beginning_e.ogg
+                        </div>
+                        <div class="file modified">
+                          ~ alert_emission_3_beginning_c.ogg
+                        </div>
+                        <div class="file modified">
+                          ~ alert_emission_3_beginning_b.ogg
+                        </div>
+                        <div class="file modified">
+                          ~ alert_emission_3_beginning_d.ogg
+                        </div>
+                        <div class="file modified">
+                          ~ alert_emission_3_ending_d.ogg
+                        </div>
+                        <div class="file modified">
+                          ~ alert_emission_3_ending_b.ogg
+                        </div>
+                        <div class="file modified">
+                          ~ alert_emission_3_ending_e.ogg
+                        </div>
+                      </details>
+                  </details>
+              </details>
+              <details class="directory" open>
+                <summary class="name">stream</summary>
+                  <details class="directory" open>
+                    <summary class="name">ambience</summary>
+                    <div class="path">modassets/assets/stalker/stream/ambience</div>
+                    <div class="file added">
+                      + sc_ambient_sovetpunk.ogg
+                    </div>
+                  </details>
+              </details>
+              <details class="directory" open>
+                <summary class="name">textures</summary>
+                  <details class="directory" open>
+                    <summary class="name">armor</summary>
+                      <details class="directory" open>
+                        <summary class="name">bf</summary>
+                        <div class="path">modassets/assets/stalker/textures/armor/bf</div>
+                        <div class="file added">
+                          + skin_9_emi.ol
+                        </div>
+                        <div class="file added">
+                          + skin_7.ol
+                        </div>
+                        <div class="file added">
+                          + skin_9.ol
+                        </div>
+                        <div class="file added">
+                          + skin_3.ol
+                        </div>
+                        <div class="file added">
+                          + skin_17.ol
+                        </div>
+                        <div class="file added">
+                          + skin_2_emi.ol
+                        </div>
+                        <div class="file added">
+                          + skin_14_emi.ol
+                        </div>
+                        <div class="file added">
+                          + skin_15_emi.ol
+                        </div>
+                        <div class="file added">
+                          + skin_6.ol
+                        </div>
+                        <div class="file added">
+                          + skin_18.ol
+                        </div>
+                        <div class="file added">
+                          + skin_14.ol
+                        </div>
+                        <div class="file added">
+                          + skin_23.ol
+                        </div>
+                        <div class="file added">
+                          + skin_5.ol
+                        </div>
+                        <div class="file added">
+                          + skin_15.ol
+                        </div>
+                        <div class="file added">
+                          + skin_3_emi.ol
+                        </div>
+                        <div class="file added">
+                          + skin_4_emi.ol
+                        </div>
+                        <div class="file added">
+                          + skin_22.ol
+                        </div>
+                        <div class="file added">
+                          + skin_1_emi.ol
+                        </div>
+                        <div class="file added">
+                          + skin_20.ol
+                        </div>
+                        <div class="file added">
+                          + skin_8.ol
+                        </div>
+                        <div class="file added">
+                          + skin_16.ol
+                        </div>
+                        <div class="file added">
+                          + skin_1.ol
+                        </div>
+                        <div class="file added">
+                          + skin_16_emi.ol
+                        </div>
+                        <div class="file added">
+                          + skin_4.ol
+                        </div>
+                        <div class="file added">
+                          + skin_19.ol
+                        </div>
+                        <div class="file added">
+                          + skin_5_emi.ol
+                        </div>
+                        <div class="file added">
+                          + skin_2.ol
+                        </div>
+                        <div class="file added">
+                          + skin_21.ol
+                        </div>
+                      </details>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">gui</summary>
+                    <div class="path">modassets/assets/stalker/textures/gui</div>
+                    <div class="file added">
+                      + quick_commands.ol
+                    </div>
+                    <div class="file deleted">
+                      - quick_commands.mic
+                    </div>
+                      <details class="directory" open>
+                        <summary class="name">abilities</summary>
+                        <div class="path">modassets/assets/stalker/textures/gui/abilities</div>
+                        <div class="file added">
+                          + ability_icons.ol
+                        </div>
+                        <div class="file deleted">
+                          - ability_icons.mic
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">arcades</summary>
+                        <div class="path">modassets/assets/stalker/textures/gui/arcades</div>
+                        <div class="file added">
+                          + level_2.ol
+                        </div>
+                        <div class="file added">
+                          + level_6.ol
+                        </div>
+                        <div class="file added">
+                          + level_3.ol
+                        </div>
+                        <div class="file added">
+                          + level_5.ol
+                        </div>
+                        <div class="file added">
+                          + level_7.ol
+                        </div>
+                        <div class="file added">
+                          + level_4.ol
+                        </div>
+                        <div class="file added">
+                          + level_8.ol
+                        </div>
+                        <div class="file added">
+                          + level_1.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">banner</summary>
+                          <details class="directory" open>
+                            <summary class="name">battlefields</summary>
+                            <div class="path">modassets/assets/stalker/textures/gui/banner/battlefields</div>
+                            <div class="file added">
+                              + slot1.mic
+                            </div>
+                            <div class="file added">
+                              + slot2.mic
+                            </div>
+                            <div class="file added">
+                              + sovetpunk.ol
+                            </div>
+                            <div class="file added">
+                              + slot.mic
+                            </div>
+                          </details>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">item_packs</summary>
+                          <details class="directory" open>
+                            <summary class="name">autumn24</summary>
+                            <div class="path">modassets/assets/stalker/textures/gui/item_packs/autumn24</div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepack1_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepack2_icon.ol
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_battlepack2_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_battlepack1_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background.mic
+                            </div>
+                          </details>
+                          <details class="directory" open>
+                            <summary class="name">dmz</summary>
+                            <div class="path">modassets/assets/stalker/textures/gui/item_packs/dmz</div>
+                            <div class="file added">
+                              + character_selection_bundle_card_camo_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepass_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background_banner_2.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_lootboxes_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background_cut.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_charm_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background_bundle_2.ol
+                            </div>
+                            <div class="file added">
+                              + background_banner_1.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_20_lvl_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_gachapon_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepack2_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepack1_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background_bundle_1.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_10_lvl_icon.ol
+                            </div>
+                            <div class="file deleted">
+                              - background_bundle_1.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_battlepack2_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_20_lvl_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_cut.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_lootboxes_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_10_lvl_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_gachapon_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_banner_2.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_battlepack1_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_bundle_2.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_camo_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_banner_1.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_battlepass_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_charm_icon.mic
+                            </div>
+                          </details>
+                          <details class="directory" open>
+                            <summary class="name">newyear</summary>
+                            <div class="path">modassets/assets/stalker/textures/gui/item_packs/newyear</div>
+                            <div class="file added">
+                              + background.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_10_lvl_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background_bundle_1.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_nycases7_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepass_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepack1_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_charm_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_camo_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background_banner_1.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_nyboxes4_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_nycases6_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_nyboxes3_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_20_lvl_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background_bundle_2.ol
+                            </div>
+                            <div class="file added">
+                              + background_banner_2.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_nycases4_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_nyboxes2_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepack2_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_nycases5_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_gachapon_icon.ol
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_nyboxes3_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_gachapon_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_nycases6_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_banner_1.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_bundle_2.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_banner_2.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_charm_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_battlepass_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_10_lvl_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_20_lvl_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_nyboxes2_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_bundle_1.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_battlepack2_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_nycases5_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_battlepack1_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_nycases7_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_nycases4_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_nyboxes4_icon.mic
+                            </div>
+                          </details>
+                          <details class="directory" open>
+                            <summary class="name">ravent</summary>
+                            <div class="path">modassets/assets/stalker/textures/gui/item_packs/ravent</div>
+                            <div class="file added">
+                              + bundle_background_image.ol
+                            </div>
+                            <div class="file added">
+                              + bundle_card_image_lvl.ol
+                            </div>
+                            <div class="file added">
+                              + bundle_card_image_gladiator.ol
+                            </div>
+                            <div class="file added">
+                              + bundle_card_image_arena.ol
+                            </div>
+                            <div class="file deleted">
+                              - bundle_card_image_lvl.mic
+                            </div>
+                            <div class="file deleted">
+                              - bundle_background_image.mic
+                            </div>
+                            <div class="file deleted">
+                              - bundle_card_image_gladiator.mic
+                            </div>
+                            <div class="file deleted">
+                              - bundle_card_image_arena.mic
+                            </div>
+                          </details>
+                          <details class="directory" open>
+                            <summary class="name">spring24</summary>
+                            <div class="path">modassets/assets/stalker/textures/gui/item_packs/spring24</div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepass_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background_bundle_2.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_lootboxes_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_gachapon_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepack2_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_20_lvl_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background_bundle_1.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_charm_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_50_lvl_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background_banner_2.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_camo_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepack1_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background_banner_1.ol
+                            </div>
+                            <div class="file deleted">
+                              - background_bundle_1.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_50_lvl_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_gachapon_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_battlepack2_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_20_lvl_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_banner_1.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_banner_2.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_charm_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_camo_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_bundle_2.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_lootboxes_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_battlepack1_icon.mic
+                            </div>
+                          </details>
+                          <details class="directory" open>
+                            <summary class="name">summer24</summary>
+                            <div class="path">modassets/assets/stalker/textures/gui/item_packs/summer24</div>
+                            <div class="file added">
+                              + background_banner_1.ol
+                            </div>
+                            <div class="file added">
+                              + background_banner_2.ol
+                            </div>
+                            <div class="file added">
+                              + background.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_20_lvl_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_camo_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background_bundle_1.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_charm_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepack1_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_gachapon_icon.ol
+                            </div>
+                            <div class="file added">
+                              + background_bundle_2.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepass_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_battlepack2_icon.ol
+                            </div>
+                            <div class="file added">
+                              + character_selection_bundle_card_lootboxes_icon.ol
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_charm_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_20_lvl_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_camo_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_lootboxes_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_battlepack2_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_bundle_2.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_gachapon_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_banner_2.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_banner_1.mic
+                            </div>
+                            <div class="file deleted">
+                              - character_selection_bundle_card_battlepack1_icon.mic
+                            </div>
+                            <div class="file deleted">
+                              - background_bundle_1.mic
+                            </div>
+                          </details>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">pause</summary>
+                          <details class="directory" open>
+                            <summary class="name">session_modes</summary>
+                            <div class="path">modassets/assets/stalker/textures/gui/pause/session_modes</div>
+                            <div class="file added">
+                              + final_screen.mic
+                            </div>
+                            <div class="file added">
+                              + final_screen_main.mic
+                            </div>
+                          </details>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">shop</summary>
+                          <details class="directory" open>
+                            <summary class="name">content</summary>
+                              <details class="directory" open>
+                                <summary class="name">other</summary>
+                                <div class="path">modassets/assets/stalker/textures/gui/shop/content/other</div>
+                                <div class="file added">
+                                  + batteries_100.ol
+                                </div>
+                                <div class="file added">
+                                  + protector_3_50.ol
+                                </div>
+                                <div class="file added">
+                                  + batteries_50.ol
+                                </div>
+                                <div class="file added">
+                                  + protector_3_100.ol
+                                </div>
+                              </details>
+                          </details>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">spring24_banner</summary>
+                        <div class="path">modassets/assets/stalker/textures/gui/spring24_banner</div>
+                        <div class="file added">
+                          + cases.ol
+                        </div>
+                        <div class="file added">
+                          + premium.ol
+                        </div>
+                        <div class="file added">
+                          + styles.ol
+                        </div>
+                        <div class="file deleted">
+                          - premium.mic
+                        </div>
+                        <div class="file deleted">
+                          - cases.mic
+                        </div>
+                        <div class="file deleted">
+                          - styles.mic
+                        </div>
+                      </details>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">loadscreen</summary>
+                      <details class="directory" open>
+                        <summary class="name">battlefield</summary>
+                        <div class="path">modassets/assets/stalker/textures/loadscreen/battlefield</div>
+                        <div class="file modified">
+                          ~ krot2.ol
+                        </div>
+                        <div class="file modified">
+                          ~ moryatnik.ol
+                        </div>
+                        <div class="file modified">
+                          ~ kolizei.ol
+                        </div>
+                        <div class="file modified">
+                          ~ collapse.ol
+                        </div>
+                        <div class="file modified">
+                          ~ jail.ol
+                        </div>
+                        <div class="file modified">
+                          ~ peklo.ol
+                        </div>
+                        <div class="file modified">
+                          ~ hospital.ol
+                        </div>
+                        <div class="file modified">
+                          ~ rus.ol
+                        </div>
+                        <div class="file modified">
+                          ~ duel.ol
+                        </div>
+                        <div class="file modified">
+                          ~ pripyat.ol
+                        </div>
+                        <div class="file modified">
+                          ~ reich.ol
+                        </div>
+                        <div class="file modified">
+                          ~ stakan.ol
+                        </div>
+                        <div class="file added">
+                          + sovetpunk.ol
+                        </div>
+                      </details>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">waypoints</summary>
+                    <div class="path">modassets/assets/stalker/textures/waypoints</div>
+                    <div class="file added">
+                      + select quest.ol
+                    </div>
+                    <div class="file added">
+                      + comand mark.ol
+                    </div>
+                    <div class="file added">
+                      + comand mark3.ol
+                    </div>
+                    <div class="file added">
+                      + quest.ol
+                    </div>
+                    <div class="file added">
+                      + finish select quest.ol
+                    </div>
+                    <div class="file added">
+                      + personal mark.ol
+                    </div>
+                    <div class="file added">
+                      + comand mark2.ol
+                    </div>
+                    <div class="file added">
+                      + death.ol
+                    </div>
+                    <div class="file added">
+                      + finish quest.ol
+                    </div>
+                  </details>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">stalkerclans</summary>
+              <details class="directory" open>
+                <summary class="name">sound</summary>
+                <div class="path">modassets/assets/stalkerclans/sound</div>
+                <div class="file added">
+                  + gg_player_katana_other.ogg
+                </div>
+                <div class="file added">
+                  + gg_player_level_up.ogg
+                </div>
+                <div class="file added">
+                  + gg_player_level_down.ogg
+                </div>
+                <div class="file added">
+                  + gg_player_katana.ogg
+                </div>
+              </details>
+              <details class="directory" open>
+                <summary class="name">textures</summary>
+                  <details class="directory" open>
+                    <summary class="name">gui</summary>
+                    <div class="path">modassets/assets/stalkerclans/textures/gui</div>
+                    <div class="file added">
+                      + br_transport.ol
+                    </div>
+                    <div class="file added">
+                      + hud_battlefield.ol
+                    </div>
+                    <div class="file added">
+                      + battle_hud.ol
+                    </div>
+                    <div class="file deleted">
+                      - br_transport.mic
+                    </div>
+                  </details>
+              </details>
+          </details>
+          <details class="directory" open>
+            <summary class="name">weapons</summary>
+              <details class="directory" open>
+                <summary class="name">models</summary>
+                  <details class="directory" open>
+                    <summary class="name">attachments</summary>
+                      <details class="directory" open>
+                        <summary class="name">6p62</summary>
+                          <details class="directory" open>
+                            <summary class="name">magazine</summary>
+                            <div class="path">modassets/assets/weapons/models/attachments/6p62/magazine</div>
+                            <div class="file added">
+                              + drum_diff.ol
+                            </div>
+                            <div class="file added">
+                              + drum.mcsb
+                            </div>
+                            <div class="file added">
+                              + drum_spek.ol
+                            </div>
+                            <div class="file added">
+                              + drum_nrm.ol
+                            </div>
+                          </details>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">deagle</summary>
+                        <div class="path">modassets/assets/weapons/models/attachments/deagle</div>
+                        <div class="file added">
+                          + stvol_bigbill_spek.ol
+                        </div>
+                        <div class="file modified">
+                          ~ stvol_spek.ol
+                        </div>
+                        <div class="file modified">
+                          ~ stvol_diff.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">groza</summary>
+                          <details class="directory" open>
+                            <summary class="name">forend</summary>
+                            <div class="path">modassets/assets/weapons/models/attachments/groza/forend</div>
+                            <div class="file modified">
+                              ~ groza_diff.ol
+                            </div>
+                          </details>
+                          <details class="directory" open>
+                            <summary class="name">magazine</summary>
+                            <div class="path">modassets/assets/weapons/models/attachments/groza/magazine</div>
+                            <div class="file modified">
+                              ~ groza_magazine_30.mcsb
+                            </div>
+                          </details>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">launcher</summary>
+                          <details class="directory" open>
+                            <summary class="name">oc14-a1_gp</summary>
+                            <div class="path">modassets/assets/weapons/models/attachments/launcher/oc14-a1_gp</div>
+                            <div class="file added">
+                              + oc14-a1_gp.mcsb
+                            </div>
+                          </details>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">planks</summary>
+                          <details class="directory" open>
+                            <summary class="name">planka_pov</summary>
+                            <div class="path">modassets/assets/weapons/models/attachments/planks/planka_pov</div>
+                            <div class="file added">
+                              + planka_pov_rune_diff.ol
+                            </div>
+                            <div class="file added">
+                              + planka_pov_rune_emi.ol
+                            </div>
+                            <div class="file added">
+                              + planka_pov_rune_spek.ol
+                            </div>
+                          </details>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">sklad_priklad</summary>
+                          <details class="directory" open>
+                            <summary class="name">aek973</summary>
+                            <div class="path">modassets/assets/weapons/models/attachments/sklad_priklad/aek973</div>
+                            <div class="file added">
+                              + aek973_butt.mcsb
+                            </div>
+                          </details>
+                      </details>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">weapons</summary>
+                      <details class="directory" open>
+                        <summary class="name">6p62</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/6p62</div>
+                        <div class="file added">
+                          + 6p62_drum_low.fbx
+                        </div>
+                        <div class="file added">
+                          + 6p62_1_spek.ol
+                        </div>
+                        <div class="file added">
+                          + 6p62.mcsb
+                        </div>
+                        <div class="file added">
+                          + 6p62_low.fbx
+                        </div>
+                        <div class="file added">
+                          + Drum_Diffuse.mic
+                        </div>
+                        <div class="file added">
+                          + 6p62_2_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + 6p62_1_diff.ol
+                        </div>
+                        <div class="file added">
+                          + Drum_Mask.mic
+                        </div>
+                        <div class="file added">
+                          + 6p62_2_spek.ol
+                        </div>
+                        <div class="file added">
+                          + 6p62_2_diff.ol
+                        </div>
+                        <div class="file added">
+                          + 6p62_1_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + Drum_Specular.mic
+                        </div>
+                        <div class="file added">
+                          + Drum_Normal.mic
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">aek762</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/aek762</div>
+                        <div class="file added">
+                          + a762_spek.ol
+                        </div>
+                        <div class="file added">
+                          + a762_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + aek762_lod.mcsb
+                        </div>
+                        <div class="file added">
+                          + a762_diff.ol
+                        </div>
+                        <div class="file added">
+                          + aek762.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">aek973</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/aek973</div>
+                        <div class="file added">
+                          + aek973_spek.ol
+                        </div>
+                        <div class="file added">
+                          + aek973_lod.mcsb
+                        </div>
+                        <div class="file added">
+                          + aek973_diff.ol
+                        </div>
+                        <div class="file added">
+                          + aek973.mcsb
+                        </div>
+                        <div class="file added">
+                          + aek973_nrm.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">ak15_3dskin</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/ak15_3dskin</div>
+                        <div class="file deleted">
+                          - ak15_3dskin.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">akm9</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/akm9</div>
+                        <div class="file added">
+                          + akm9.mcsb
+                        </div>
+                        <div class="file added">
+                          + akm9_spek.ol
+                        </div>
+                        <div class="file added">
+                          + akm9_diff.ol
+                        </div>
+                        <div class="file added">
+                          + akm9_lod.mcsb
+                        </div>
+                        <div class="file added">
+                          + akm9_nrm.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">asm_val</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/asm_val</div>
+                        <div class="file added">
+                          + valm_diff.ol
+                        </div>
+                        <div class="file added">
+                          + valm_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + asm_val.mcsb
+                        </div>
+                        <div class="file added">
+                          + valm_spek.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">chiappaobrez</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/chiappaobrez</div>
+                        <div class="file added">
+                          + ChiappaObrez_lod.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">colt</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/colt</div>
+                        <div class="file added">
+                          + smesson_spek.ol
+                        </div>
+                        <div class="file added">
+                          + smesson_diff.ol
+                        </div>
+                        <div class="file added">
+                          + smesson_nrm.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">deagle</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/deagle</div>
+                        <div class="file added">
+                          + bigbill_nrm.ol
+                        </div>
+                        <div class="file modified">
+                          ~ deagle_gold_diff.ol
+                        </div>
+                        <div class="file added">
+                          + bigbill_spek.ol
+                        </div>
+                        <div class="file added">
+                          + bigbill_diff.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">detektor_model</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/detektor_model</div>
+                        <div class="file modified">
+                          ~ elbrus_carton.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">gornostay</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/gornostay</div>
+                        <div class="file added">
+                          + gornostay_diff.ol
+                        </div>
+                        <div class="file added">
+                          + gornostay_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + gornostay.mcsb
+                        </div>
+                        <div class="file added">
+                          + gornostay_spek.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">highestpower</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/highestpower</div>
+                        <div class="file added">
+                          + highestpower_diff.ol
+                        </div>
+                        <div class="file added">
+                          + highestpower_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + highestpower.mcsb
+                        </div>
+                        <div class="file added">
+                          + highestpower_spek.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">mk47</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/mk47</div>
+                        <div class="file added">
+                          + mk47_lod.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">oc14-a1</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/oc14-a1</div>
+                        <div class="file added">
+                          + ots14a1_diff.ol
+                        </div>
+                        <div class="file added">
+                          + ots14a1_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + oc14-a1.mcsb
+                        </div>
+                        <div class="file added">
+                          + ots14a1_spek.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">ots14m</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/ots14m</div>
+                        <div class="file added">
+                          + ots14m_lod.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">qbu191</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/qbu191</div>
+                        <div class="file added">
+                          + qbu191_lod.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">qbz192</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/qbz192</div>
+                        <div class="file added">
+                          + qbz192_lod.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">sa20_pulse</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/sa20_pulse</div>
+                        <div class="file added">
+                          + pulse_diff.ol
+                        </div>
+                        <div class="file added">
+                          + pulse_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + sa20_pulse_lod.mcsb
+                        </div>
+                        <div class="file added">
+                          + sa20_pulse.mcsb
+                        </div>
+                        <div class="file added">
+                          + pulse_spek.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">sa20_rhythm</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/sa20_rhythm</div>
+                        <div class="file added">
+                          + rhytmh_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + rhytmh_diff.ol
+                        </div>
+                        <div class="file added">
+                          + sa20_rhythm.mcsb
+                        </div>
+                        <div class="file added">
+                          + rhytmh_spek.ol
+                        </div>
+                        <div class="file added">
+                          + sa20_rhythm_lod.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">sa20_takt</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/sa20_takt</div>
+                        <div class="file added">
+                          + takt_spek.ol
+                        </div>
+                        <div class="file added">
+                          + takt_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + takt_diff.ol
+                        </div>
+                        <div class="file added">
+                          + sa20_takt.mcsb
+                        </div>
+                        <div class="file added">
+                          + sa20_takt_lod.mcsb
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">smesson</summary>
+                        <div class="path">modassets/assets/weapons/models/weapons/smesson</div>
+                        <div class="file added">
+                          + smesson_nrm.ol
+                        </div>
+                        <div class="file added">
+                          + smesson_diff.ol
+                        </div>
+                        <div class="file added">
+                          + colt_nrm.mic
+                        </div>
+                        <div class="file added">
+                          + smesson_spek.ol
+                        </div>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">xpainter</summary>
+                          <details class="directory" open>
+                            <summary class="name">wpn_paint</summary>
+                              <details class="directory" open>
+                                <summary class="name">blood_grid</summary>
+                                <div class="path">modassets/assets/weapons/models/weapons/xpainter/wpn_paint/blood_grid</div>
+                                <div class="file added">
+                                  + blood_grid_nrm.ol
+                                </div>
+                                <div class="file added">
+                                  + blood_grid_emi.ol
+                                </div>
+                                <div class="file added">
+                                  + blood_grid_diff.ol
+                                </div>
+                                <div class="file added">
+                                  + blood_grid_spek.ol
+                                </div>
+                              </details>
+                              <details class="directory" open>
+                                <summary class="name">cinnabar</summary>
+                                <div class="path">modassets/assets/weapons/models/weapons/xpainter/wpn_paint/cinnabar</div>
+                                <div class="file added">
+                                  + cinnabarl_nrm.ol
+                                </div>
+                                <div class="file added">
+                                  + cinnabar_diff.ol
+                                </div>
+                                <div class="file added">
+                                  + cinnabar_spek.ol
+                                </div>
+                                <div class="file added">
+                                  + cinnabar_emi.ol
+                                </div>
+                              </details>
+                              <details class="directory" open>
+                                <summary class="name">greenice</summary>
+                                <div class="path">modassets/assets/weapons/models/weapons/xpainter/wpn_paint/greenice</div>
+                                <div class="file added">
+                                  + greenice_arm_diff.ol
+                                </div>
+                                <div class="file added">
+                                  + greenice_diff.ol
+                                </div>
+                                <div class="file added">
+                                  + greenice_emiss.ol
+                                </div>
+                                <div class="file added">
+                                  + greenice_nrm.ol
+                                </div>
+                              </details>
+                              <details class="directory" open>
+                                <summary class="name">sapphire</summary>
+                                <div class="path">modassets/assets/weapons/models/weapons/xpainter/wpn_paint/sapphire</div>
+                                <div class="file added">
+                                  + sapphire_spek.ol
+                                </div>
+                                <div class="file added">
+                                  + sapphire_emi.ol
+                                </div>
+                                <div class="file added">
+                                  + sapphire_nrm.ol
+                                </div>
+                                <div class="file added">
+                                  + sapphire_diff.ol
+                                </div>
+                              </details>
+                          </details>
+                      </details>
+                  </details>
+              </details>
+              <details class="directory" open>
+                <summary class="name">sound</summary>
+                  <details class="directory" open>
+                    <summary class="name">6p62</summary>
+                    <div class="path">modassets/assets/weapons/sound/6p62</div>
+                    <div class="file added">
+                      + 6p62_reload_drum_bolt.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_reload_out_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_reload_drum_in_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_draw_first.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_reload_drum_out.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_reload_out.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_jam_fix.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_reload_in_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_draw.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_holster.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_reload_bolt.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_inspect.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_reload_in.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_reload_drum_out_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + 6p62_reload_drum_in.ogg
+                    </div>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">a545</summary>
+                    <div class="path">modassets/assets/weapons/sound/a545</div>
+                    <div class="file added">
+                      + a762_inspect.ogg
+                    </div>
+                    <div class="file added">
+                      + a762_draw_first.ogg
+                    </div>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">aek971</summary>
+                    <div class="path">modassets/assets/weapons/sound/aek971</div>
+                    <div class="file added">
+                      + aek973_reload_drum_bolt.ogg
+                    </div>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">ak9m</summary>
+                    <div class="path">modassets/assets/weapons/sound/ak9m</div>
+                    <div class="file added">
+                      + ak9m_inspect.ogg
+                    </div>
+                    <div class="file added">
+                      + ak9m_draw_first.ogg
+                    </div>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">asmval</summary>
+                    <div class="path">modassets/assets/weapons/sound/asmval</div>
+                    <div class="file added">
+                      + asmval_reload_in_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + asmval_draw_first.ogg
+                    </div>
+                    <div class="file added">
+                      + asmval_reload_bolt.ogg
+                    </div>
+                    <div class="file added">
+                      + asmval_inspect_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + asmval_draw.ogg
+                    </div>
+                    <div class="file added">
+                      + asmval_reload_out.ogg
+                    </div>
+                    <div class="file added">
+                      + asmval_reload_out_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + asmval_inspect.ogg
+                    </div>
+                    <div class="file added">
+                      + asmval_reload_in.ogg
+                    </div>
+                    <div class="file added">
+                      + asmval_holster.ogg
+                    </div>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">bullet</summary>
+                    <div class="path">modassets/assets/weapons/sound/bullet</div>
+                    <div class="file added">
+                      + collide_shifer11.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_elDevice12.ogg
+                    </div>
+                    <div class="file added">
+                      + whine10.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_rock15.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_concrete12.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_brick15.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_shifer12.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_stone14.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_stone12.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_concrete15.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_metalRail12.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_shifer13.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_elDeviceOn23.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_elDevice15.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_concrete11.ogg
+                    </div>
+                    <div class="file added">
+                      + whine9.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_elDeviceOn24.ogg
+                    </div>
+                    <div class="file added">
+                      + whine12.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_elDeviceOn21.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_shifer14.ogg
+                    </div>
+                    <div class="file added">
+                      + whine14.ogg
+                    </div>
+                    <div class="file added">
+                      + whine7.ogg
+                    </div>
+                    <div class="file added">
+                      + whine5.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_shifer15.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_metal11.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_stone13.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_rock14.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_metalRail11.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_rock13.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_elDevice14.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_metal15.ogg
+                    </div>
+                    <div class="file added">
+                      + whine6.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_metalRail13.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_rock12.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_elDevice11.ogg
+                    </div>
+                    <div class="file added">
+                      + whine11.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_stone11.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_metalRail14.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_brick14.ogg
+                    </div>
+                    <div class="file added">
+                      + whine8.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_rock11.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_brick12.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_stone15.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_metalRail15.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_brick11.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_metal13.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_metal14.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_concrete13.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_concrete14.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_elDeviceOn25.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_metal12.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_elDeviceOn22.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_brick13.ogg
+                    </div>
+                    <div class="file added">
+                      + collide_elDevice13.ogg
+                    </div>
+                    <div class="file added">
+                      + whine13.ogg
+                    </div>
+                    <div class="file deleted">
+                      - whine3.ogg
+                    </div>
+                    <div class="file deleted">
+                      - whine1.ogg
+                    </div>
+                    <div class="file deleted">
+                      - whine2.ogg
+                    </div>
+                    <div class="file deleted">
+                      - whine4.ogg
+                    </div>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">gornostay</summary>
+                    <div class="path">modassets/assets/weapons/sound/gornostay</div>
+                    <div class="file added">
+                      + gornostay_reload_out_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + gornostay_reload_in_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + gornostay_reload_out.ogg
+                    </div>
+                    <div class="file added">
+                      + gornostay_reload_in.ogg
+                    </div>
+                    <div class="file added">
+                      + gornostay_inspect.ogg
+                    </div>
+                    <div class="file added">
+                      + gornostay_reload_bolt_in.ogg
+                    </div>
+                    <div class="file added">
+                      + gornostay_draw_first.ogg
+                    </div>
+                    <div class="file added">
+                      + gornostay_draw.ogg
+                    </div>
+                    <div class="file added">
+                      + gornostay_reload_bolt_out.ogg
+                    </div>
+                    <div class="file added">
+                      + gornostay_holster.ogg
+                    </div>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">takt</summary>
+                    <div class="path">modassets/assets/weapons/sound/takt</div>
+                    <div class="file added">
+                      + takt_reload_out_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + takt_reload_in.ogg
+                    </div>
+                    <div class="file added">
+                      + takt_reload_out.ogg
+                    </div>
+                    <div class="file added">
+                      + takt_jam_fix.ogg
+                    </div>
+                    <div class="file added">
+                      + takt_draw_first_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + takt_reload_in_empty.ogg
+                    </div>
+                    <div class="file added">
+                      + takt_inspect.ogg
+                    </div>
+                    <div class="file added">
+                      + takt_reload_bolt.ogg
+                    </div>
+                    <div class="file added">
+                      + takt_draw.ogg
+                    </div>
+                    <div class="file added">
+                      + takt_holster.ogg
+                    </div>
+                    <div class="file added">
+                      + takt_draw_first.ogg
+                    </div>
+                    <div class="file added">
+                      + takt_inspect_empty.ogg
+                    </div>
+                  </details>
+              </details>
+              <details class="directory" open>
+                <summary class="name">textures</summary>
+                  <details class="directory" open>
+                    <summary class="name">gui</summary>
+                    <div class="path">modassets/assets/weapons/textures/gui</div>
+                    <div class="file added">
+                      + line.ol
+                    </div>
+                    <div class="file added">
+                      + grenades_indicator.ol
+                    </div>
+                  </details>
+                  <details class="directory" open>
+                    <summary class="name">items</summary>
+                      <details class="directory" open>
+                        <summary class="name">att</summary>
+                        <div class="path">modassets/assets/weapons/textures/items/att</div>
+                        <div class="file added">
+                          + mag_drum6p62.ol
+                        </div>
+                          <details class="directory" open>
+                            <summary class="name">accessories</summary>
+                            <div class="path">modassets/assets/weapons/textures/items/att/accessories</div>
+                            <div class="file modified">
+                              ~ acc_stalker_s.ol
+                            </div>
+                            <div class="file modified">
+                              ~ acc_bandit_s.ol
+                            </div>
+                            <div class="file modified">
+                              ~ acc_bandit_g.ol
+                            </div>
+                            <div class="file modified">
+                              ~ acc_bandit_b.ol
+                            </div>
+                            <div class="file modified">
+                              ~ acc_stalker_b.ol
+                            </div>
+                            <div class="file modified">
+                              ~ acc_stalker_g.ol
+                            </div>
+                          </details>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">paints</summary>
+                          <details class="directory" open>
+                            <summary class="name">bf</summary>
+                            <div class="path">modassets/assets/weapons/textures/items/paints/bf</div>
+                            <div class="file added">
+                              + skin_7.ol
+                            </div>
+                            <div class="file added">
+                              + skin_10_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_12.ol
+                            </div>
+                            <div class="file added">
+                              + skin_8.ol
+                            </div>
+                            <div class="file added">
+                              + skin_18.ol
+                            </div>
+                            <div class="file added">
+                              + skin_2.ol
+                            </div>
+                            <div class="file added">
+                              + skin_23.ol
+                            </div>
+                            <div class="file added">
+                              + skin_17.ol
+                            </div>
+                            <div class="file added">
+                              + skin_16_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_18_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_6_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_21.ol
+                            </div>
+                            <div class="file added">
+                              + skin_5.ol
+                            </div>
+                            <div class="file added">
+                              + skin_13.ol
+                            </div>
+                            <div class="file added">
+                              + skin_22.ol
+                            </div>
+                            <div class="file added">
+                              + skin_11.ol
+                            </div>
+                            <div class="file added">
+                              + skin_11_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_9.ol
+                            </div>
+                            <div class="file added">
+                              + skin_4.ol
+                            </div>
+                            <div class="file added">
+                              + skin_4_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_1.ol
+                            </div>
+                            <div class="file added">
+                              + skin_21_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_19_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_6.ol
+                            </div>
+                            <div class="file added">
+                              + skin_20.ol
+                            </div>
+                            <div class="file added">
+                              + skin_1_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_22_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_5_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_9_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_8_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_13_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_20_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_12_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_2_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_14_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_7_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_15.ol
+                            </div>
+                            <div class="file added">
+                              + skin_3.ol
+                            </div>
+                            <div class="file added">
+                              + skin_3_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_15_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_19.ol
+                            </div>
+                            <div class="file added">
+                              + skin_14.ol
+                            </div>
+                            <div class="file added">
+                              + skin_16.ol
+                            </div>
+                            <div class="file added">
+                              + skin_17_w.ol
+                            </div>
+                            <div class="file added">
+                              + skin_10.ol
+                            </div>
+                            <div class="file added">
+                              + skin_23_w.ol
+                            </div>
+                          </details>
+                      </details>
+                      <details class="directory" open>
+                        <summary class="name">weapons</summary>
+                        <div class="path">modassets/assets/weapons/textures/items/weapons</div>
+                        <div class="file added">
+                          + bigbill.ol
+                        </div>
+                        <div class="file added">
+                          + highestpower.ol
+                        </div>
+                        <div class="file added">
+                          + akm9.ol
+                        </div>
+                        <div class="file added">
+                          + pulse.ol
+                        </div>
+                        <div class="file added">
+                          + a762.ol
+                        </div>
+                        <div class="file modified">
+                          ~ deagle.ol
+                        </div>
+                        <div class="file added">
+                          + aek973.ol
+                        </div>
+                        <div class="file added">
+                          + 6p62.ol
+                        </div>
+                        <div class="file added">
+                          + sa20_rhythm.ol
+                        </div>
+                        <div class="file added">
+                          + ots14a1.ol
+                        </div>
+                        <div class="file added">
+                          + smesson.ol
+                        </div>
+                        <div class="file added">
+                          + gornostay.ol
+                        </div>
+                        <div class="file added">
+                          + sa20_takt.ol
+                        </div>
+                        <div class="file added">
+                          + deagle7.ol
+                        </div>
+                        <div class="file deleted">
+                          - deagle_mod.ol
+                        </div>
+                      </details>
+                  </details>
+              </details>
+          </details>
+      </details>
+  </details>
+</div>
+    <h2>Изменения в файле локализации</h2>
+    <div class="lang-changes"><div class="diff-line added">ejection.stage.notf.ending_22 = Фух, в который раз уже, а я все никак не привыкну…\nВыброс окончен, народ, на улице вновь безопасно.</div><div class="diff-line added">item.wpn.akm9.description = Создан на основе проверенной конструкции АКМ, адаптированной под патроны 9x39 мм. Несъёмный глушитель и совместимость с магазинами ОЦ-14 «Гроза» делают его идеальным выбором для опытных бойцов, ценящих сочетание скрытности и огневой мощи.</div><div class="diff-line added">battlefield.id.pripyat.point.garage.name = Гараж</div><div class="diff-line added">ejection.stage.notf.ending_17 = Фух… пронесло, вроде. Можете выползать наружу, мужики.\nЗа бортом все спокойно.</div><div class="diff-line added">ejection.stage.notf.starting_25 = Повторное сообщение для тех, кто плохо слышит - выброс уже начался!\nЕсли сейчас же не доберетесь до убежища - сгорите заживо!</div><div class="diff-line added">shop.offers.items.protectors_3.titleLabel = Продвинутые запчасти x{amount}</div><div class="diff-line added">ejection.stage.notf.storm_20 = Молитесь, чтоб ваше укрытие выдержало - выброс попер!</div><div class="diff-line added">battlefield.id.kolizei.point.block_3.name = Блок 3</div><div class="diff-line added">battlefield.id.collapse.point.east.name = Восток</div><div class="diff-line added">gui.battlefields.banner.season = Начать игру</div><div class="diff-line added">ejection.stage.notf.storm_17 = Понеслась…</div><div class="diff-line added">battlefield.id.hospital_gungame.name = [ГВ]Госпиталь</div><div class="diff-line added">item.camo.arm.bf_skin_4.name = Краска «Розовые осколки»</div><div class="diff-line added">ejection.stage.notf.starting_21 = Если не хотите преждевременной кремации - дуйте в укрытие, выброс уже бушует!</div><div class="diff-line added">item.wpn.rhythm.description = Элитная винтовка, предназначенная для опытных бойцов. Стреляет только отсечками, обладает повышенной точностью и практически незаметной отдачей.</div><div class="diff-line added">ejection.stage.notf.storm_13 = Не вздумайте покидать укрытие - началась активная фаза выброса!</div><div class="diff-line added">item.wpn.highest_power.name = «Highest power»</div><div class="diff-line added">ejection.stage.notf.starting_9 = Выброс набирает силу! Бегом в укрытие, пока не шандарахнуло по полной!</div><div class="diff-line added">item.brt.battlefields.name = Боевой жетон</div><div class="diff-line added">item.camo.wpn.bf_skin_7.name = Краска «Мутировавшая оболочка»</div><div class="diff-line added">ejection.stage.notf.preparation_26 = Отвлекитесь от дел на секунду и послушайте меня! Совсем скоро по Зоне пройдется Выброс.\nПодыщите себе укрытие понадежнее, пока есть время!</div><div class="diff-line added">item.camo.wpn.bf_skin_23.name = Краска «Токсичные линии»</div><div class="diff-line added">ejection.stage.notf.deadline_11 = Еще немного, и можете стартовать забег за артефактами. Выброс почти закончился!</div><div class="diff-line added">battlefield.id.collapse.point.west.name = Запад</div><div class="diff-line added">battlefield.id.rus.team1.name = Русы</div><div class="diff-line added">battlefield.id.sovetpunk_gungame.description = Быстрый режим, где убийства меняют ваше оружие. Стремитесь быть первым, кто использует весь арсенал!</div><div class="diff-line added">item.camo.wpn.bf_skin_8.name = Краска «Blufor»</div><div class="diff-line added">battlefield.id.stakan.point.east.name = Зал</div><div class="diff-line added">item.wpn.aek973.name = АЕК-973 «Марс»</div><div class="diff-line added">battlefield.id.reich.point.wing.name = Фланг</div><div class="diff-line added">item.wpn.mx4_dm.name = Тренировочный MX4</div><div class="diff-line added">ejection.stage.notf.ending_18 = Солнце светит, птички поют, показатели в норме.\nВсе, народ, угроза миновала!</div><div class="diff-line added">ejection.stage.notf.deadline_14 = Сидите смирно и не высовывайтесь - выброс разошелся не на шутку!</div><div class="diff-line added">item.camo.wpn.bf_skin_21.name = Краска «Узор хищника»</div><div class="diff-line added">ejection.stage.notf.storm_14 = Забейтесь в норы поглубже - сейчас рванет!</div><div class="diff-line added">item.camo.wpn.bf_skin_4.name = Краска «Розовые осколки»</div><div class="diff-line added">item.wpn.valm.description = Модификация винтовки АС «Вал», отличающаяся повышенной модульностью. Встроенная планка Пикатинни и многофункциональное цевье позволяют гибко настраивать оружие под различные задачи.</div><div class="diff-line added">item.wpn.smesson.name = «Смессон»</div><div class="diff-line added">item.camo.arm.bf_skin_20.name = Краска «Фиолетовые нити»</div><div class="diff-line added">item.camo.arm.bf_skin_10.name = Краска «Blood Grid»</div><div class="diff-line added">ejection.stage.notf.preparation_8 = Народ, внимание! Скоро ожидается выброс. Не советую шастать по Зоне, когда он нагрянет!</div><div class="diff-line added">ejection.stage.notf.storm_18 = Держитесь подальше от окон и дверей - выброс шпарит!</div><div class="diff-line added">ejection.stage.notf.storm_15 = Всем сидеть смирно - выброс пожаловал!</div><div class="diff-line added">battlefield.id.stakan_gungame.name = [ГВ] Стакан</div><div class="diff-line added">battlefield.id.moryatnik.name = Морятник</div><div class="diff-line added">battlefield.id.pripyat.name = Улицы Припяти</div><div class="diff-line added">ejection.stage.notf.storm_10 = Всe, орлы, держитесь! Выброс начался!</div><div class="diff-line added">ejection.stage.notf.preparation_21 = Всем, кто меня слышит - на Зону надвигается выброс!\nЕсли не хотите превратиться в уголь - отправляйтесь в ближайшее укрытие!</div><div class="diff-line added">ejection.stage.notf.deadline_24 = Пиковая фаза выброса коротка, но интенсивна. Потерпите немного!</div><div class="diff-line added">ejection.stage.notf.starting_26 = Повторяю для тех, кто погрузился в поиск артов настолько, что не услышал объявление - выброс уже стартовал!\nБросайте все к едрени матери и бегите в укрытие!</div><div class="diff-line added">ejection.stage.notf.deadline_21 = Ух как трясет! Видать, напоследок выброс решил вдарить по максимуму!</div><div class="diff-line added">ejection.stage.notf.storm_12 = Крепитесь, мужики, сейчас будет жарко - выброс пошел!</div><div class="diff-line added">location.battlefield_sovetpunk_open.name = ГОСТ-17</div><div class="diff-line added">item.att.mag_drum6p62.name = Барабанный магазин 6П62</div><div class="diff-line added">ejection.stage.notf.ending_10 = Угроза миновала! Можете возвращаться к своим любимым занятиям:\nмародерству, убийству и грабежу!</div><div class="diff-line added">item.camo.wpn.bf_skin_6.name = Краска «Токсичная коррозия»</div><div class="diff-line added">shop.offers.items.batteries.titleLabel = Нестабильные аномальные батареи x{amount}</div><div class="diff-line added">ejection.stage.notf.storm_9 = Все, пошла жара... Надеюсь, вы успели найти безопасное место.</div><div class="diff-line added">battlefield.id.stakan.point.centre.name = Центр</div><div class="diff-line added">item.camo.arm.bf_skin_17.name = Краска «Красные нити»</div><div class="diff-line added">shop.tabs.personal.title = ПЕРСОНАЛЬНОЕ ПРЕДЛОЖЕНИЕ</div><div class="diff-line added">gui.battlefields.banner.block1.desc = Участвуй в сессионных режимах на новой карте! Множество батутов и телепортов позволят тебе быстро перемещаться по карте и эффективно расправляться с противниками.</div><div class="diff-line added">ejection.stage.notf.ending_8 = Прием, прием! Можете вылезать из своих нор. Похоже, Выброс закончился!</div><div class="diff-line added">ejection.stage.notf.starting_23 = Ну все, Зону накрыл выброс. Кто спрятался - молодцы,\nкто не спрятался… вам что, жить надоело? Пулей в укрытие!</div><div class="diff-line added">item.camo.arm.bf_skin_22.name = Краска «Предостережение»</div><div class="diff-line added">gui.battlefields.banner.block2.title = Магазин Спартака</div><div class="diff-line added">battlefield.id.peklo.point.centre.name = Центр</div><div class="diff-line added">ejection.stage.notf.storm_8 = Актив... фаза... выброс... держи... мужики!</div><div class="diff-line added">ejection.stage.notf.preparation_16 = Либо мои приборы барахлят, либо сейчас по нам вдарит Выброс!\nНа всякий случай, подыщите себе укрытие.</div><div class="diff-line added">item.wpn.smesson.description = Модификация легендарного SW1911, сделанная под патрон 9x39 мм. «Смессон» выбирают бойцы, уверенные в своей точности: огневая мощь пистолета повышена за счет снижения скорострельности и объема магазина.</div><div class="diff-line added">gui.battlefields.banner.desc = Долгожданное обновление уже в игре!\nВ Зоне появился организатор сессионных боев - Спартак. Он продает уникальные товары из своей коллекции и самым ценным является 6П62 «Малыш» - новый пулемет калибра 12.7.\nСпартак не принимает обычную валюту, он ценит только «Боевые жетоны» - особые монеты, которые можно получить, завершая матчи в сессионных боях.\n\nВ честь этого были организованы специальные режимы - «Дезматч» и «Гонка вооружений». Они проходят на выдаваемом снаряжении, и требуют лишь хороших навыков стрельбы. Два режима будут чередоваться между собой каждый день.\nНайти их можно во вкладки «Сессионные бои».\n\nЖелаем удачи в бою!</div><div class="diff-line added">item.camo.wpn.bf_skin_17.name = Краска «Красные нити»</div><div class="diff-line added">battlefield.id.rus.team2.name = Ящеры</div><div class="diff-line added">item.wpn.a762.description = Модификация А-545 под калибр 7.62x39. Пониженная скорострельность компенсируется возросшей огневой мощью.</div><div class="diff-line added">item.camo.wpn.bf_skin_22.name = Краска «Предостережение»</div><div class="diff-line added">item.camo.wpn.bf_skin_11.name = Краска «Изумрудный взрыв»</div><div class="diff-line added">battlefield.id.kolizei.point.block_2.name = Блок 2</div><div class="diff-line added">ejection.stage.notf.deadline_15 = Вся аппаратура перегружена, показатели зашкаливают - похоже,\nначался финальный этап выброса! Всем сохранять спокойствие!</div><div class="diff-line added">battlefield.id.hospital.name = Госпиталь</div><div class="diff-line added">battlefield.id.kolizei.point.block_1.name = Блок 1</div><div class="diff-line added">item.wpn.rhythm.name = PSA PA 10 «Ритм»</div><div class="diff-line added">ejection.stage.notf.ending_14 = Выброс приходит и уходит, а Зона остается...\nВыходите на свет, народ, угроза миновала!</div><div class="diff-line added">gui.battlefields.banner.headerLabel = ОБНОВЛЕНИЕ</div><div class="diff-line added">battlefield.id.moryatnik.point.centre.name = Центр</div><div class="diff-line added">item.camo.arm.bf_skin_6.name = Краска «Токсичная коррозия»</div><div class="diff-line added">item.wpn.6p62.description = Экспериментальный ручной пулемет калибра 12.7x55 мм. Мощное оружие для поражения бронированных целей на больших расстояниях. Имеет сильную отдачу и низкую скорострельность, что делает его сложным в управлении.</div><div class="diff-line added">ejection.stage.notf.preparation_18 = Внимание, народ! Скоро нас всех накроет очередной выброс -\nсоветую уже сейчас подумать, где будете отсиживаться!</div><div class="diff-line added">item.camo.arm.bf_skin_7.name = Краска «Мутировавшая оболочка»</div><div class="diff-line added">item.wpn.gornostay.description = Был создан в 1990-х годах для подразделений специального назначения. Глушитель и легкая перезарядка магазинами от ОЦ-14 «Гроза» делают его простым, но эффективным инструментом для выполнения боевых задач в различных условиях.</div><div class="diff-line added">battlefield.id.kolizei.point.laboratory.name = Лаборатория</div><div class="diff-line added">ejection.stage.notf.ending_9 = Фух, вот это знатно тряхнуло! Выброс вроде закончился,\nа меня до сих пор колбасит!</div><div class="diff-line added">ejection.stage.notf.storm_7 = А вот и Выброс пожаловал! Кто не спрятался - я не виноват!</div><div class="diff-line added">item.rep.battlefields.name = Репутация Сессионных Боев</div><div class="diff-line added">item.camo.wpn.bf_skin_1.name = Краска «Срыв»</div><div class="diff-line modified">item.wpn.ptrd.features = Игнорирует защиту пластин @Ломает пластины @Смертельный выстрел @Пониженный разброс в приседе @Улучшенная отдача в положении лёжа</div><div class="diff-line added">item.wpn.6p62.name = 6П62 «Малыш»</div><div class="diff-line added">ejection.stage.notf.preparation_13 = Заканчивайте шариться по помойкам в поисках артефактов и ищите укрытие - скоро выброс!</div><div class="diff-line added">ejection.stage.notf.starting_15 = С выбросом шутки плохи. Если не хотите превратиться в уголь,\nтопайте в укрытие. Времени в обрез!</div><div class="diff-line added">ejection.stage.notf.starting_10 = Пока выброс слабый, но скоро начнет жарить - мама не горюй.\nПоследний шанс найти укрытие, не прохлопайте его!</div><div class="diff-line added">battlefield.id.collapse.point.south.name = Юг</div><div class="diff-line added">gui.battlefields.banner.play.actionText = Играть</div><div class="diff-line added">item.camo.wpn.bf_skin_3.name = Краска «Красные осколки»</div><div class="diff-line added">item.camo.wpn.bf_skin_10.name = Краска «Blood Grid»</div><div class="diff-line added">battlefield.id.krot2.point.load.name = Погрузочная</div><div class="diff-line added">gui.battlefields.banner.title = СЕССИОННЫЕ БОИ</div><div class="diff-line added">ejection.stage.notf.ending_16 = Выброс закончился! Если вы выжили - постарайтесь не умереть\nот других опасностей Зоны.</div><div class="diff-line added">item.camo.arm.bf_skin_9.name = Краска «Кровавый туман»</div><div class="diff-line added">battlefield.id.jail.name = Тюрьма</div><div class="diff-line added">battlefield.id.collapse.point.centre.name = Центр</div><div class="diff-line added">ejection.stage.notf.ending_7 = Кто пережил выброс - молодец, но сильно шибко не радуйтесь.\nЗа ним обязательно последует новый!</div><div class="diff-line added">ejection.stage.notf.deadline_13 = Пошла заключительная фаза выброса - держитесь,\nсейчас будет трясти похлеще, чем в трамвае!</div><div class="diff-line added">battlefield.id.kolizei.name = Колизей</div><div class="diff-line added">item.camo.arm.bf_skin_12.name = Краска «Киноварь»</div><div class="diff-line added">battlefield.id.reich_night.name = Штурм Рейхстага (ночь)</div><div class="diff-line added">ejection.stage.notf.storm_22 = Все, поезд ушел - пошла активная фаза выброса...</div><div class="diff-line added">ejection.stage.notf.preparation_24 = Срочное сообщение - приближается выброс, всем исследователям Зоны\nнеобходимо немедленно найти укрытие!</div><div class="diff-line added">item.wpn.akm9.name = АК-9М «Койот»</div><div class="diff-line added">battlefield.id.jail.point.centre.name = Центр</div><div class="diff-line added">gui.battlefields.banner.block1.title = ГОСТ-17</div><div class="diff-line added">item.camo.wpn.bf_skin_13.name = Краска «Сапфир»</div><div class="diff-line added">ejection.stage.notf.preparation_7 = Скоро Зону накроет Выброс, так что шуруйте в укрытие, пока пятки к полу не прилипли!</div><div class="diff-line added">ejection.stage.notf.preparation_25 = Навострите уши, мужики, важное сообщение - приближается выброс!\nШагайте в сторону укрытия, пока не поздно!</div><div class="diff-line added">battlefield.id.rus.point.south.name = Кладка Ящеров</div><div class="diff-line added">item.camo.arm.bf_skin_23.name = Краска «Токсичные линии»</div><div class="diff-line modified">item.gauss.features = Игнорирует защиту пластин</div><div class="diff-line added">ejection.stage.notf.starting_14 = Чувствуете, будто воздух искрит? Значит, сейчас конкретно рванет!\nПулей в укрытие, иначе поджаритесь, как на сковородке!</div><div class="diff-line added">settlement.id.battlefields.unavailableLine = Недостаточный уровень репутации</div><div class="diff-line added">battlefield.id.pripyat.point.box.name = Коробка</div><div class="diff-line added">item.camo.arm.bf_skin_16.name = Краска «Мутировавшие наросты»</div><div class="diff-line added">ejection.stage.notf.preparation_17 = Главное стихийное бедствие Зоны скоро накроет ее с ног до головы.\nБегом в укрытие, если не хотите попасть под Выброс!</div><div class="diff-line modified">item.24002.name = Серебряный жетон сталкера</div><div class="diff-line added">ejection.stage.notf.storm_25 = Приготовьтесь, ребята, сейчас будет жарко - выброс набирает обороты!</div><div class="diff-line added">item.wpn.mts255_dm.name = Тренировочное МЦ-255</div><div class="diff-line added">item.camo.wpn.bf_skin_14.name = Краска «Бордовые наросты»</div><div class="diff-line added">item.camo.wpn.bf_skin_18.name = Краска «Синие нити»</div><div class="diff-line added">battlefield.id.kolizei.point.block_4.name = Блок 4</div><div class="diff-line added">battlefield.id.rus.point.middle.name = Центр</div><div class="diff-line added">ejection.stage.notf.ending_21 = Погремело, погремело, и снова тишина…\nВсе закончилось, мужики, можете покинуть укрытие.</div><div class="diff-line added">ejection.stage.notf.ending_13 = Выброс стих! Сообщение для выживших:\nможете покидать свое укрытие, снаружи вновь безопасно.</div><div class="diff-line added">item.camo.wpn.bf_skin_12.name = Краска «Киноварь»</div><div class="diff-line added">battlefield.id.reich.point.entrance.name = Вход</div><div class="diff-line modified">item.wpn.deagle_mod.description = Модификация пистолета Desert Eagle. Как и его предшественник, остается лучшим оружием для тех, кто требует высокой убойной силы в критических ситуациях. Адаптирован под патрон 9x39 мм, что ощутимо добавляет огневой мощи.</div><div class="diff-line added">ejection.stage.notf.deadline_10 = Выброс не остановится, пока всю Зону не поджарит до золотистой корочки!\nТак что сидим смирно, мужики - недолго осталось!</div><div class="diff-line added">ejection.stage.notf.storm_19 = Все, наружу не соваться - выброс начался!</div><div class="diff-line added">battlefield.id.collapse.point.north.name = Север</div><div class="diff-line added">ejection.stage.notf.storm_11 = Заприте двери намертво - выброс начался!</div><div class="diff-line added">ejection.stage.notf.starting_12 = Последнее предупреждение! Еще немного, и выброс начнет херачить не по-детски!\nВсем срочно найти укрытие!</div><div class="diff-line added">item.wpn.aek973.description = Модификация АЕК-971, адаптированная для патронов 7.62x39 мм. Изменение калибра позволило увеличить урон, слегка пожертвовав скорострельностью.</div><div class="diff-line modified">stalker.navigation.transition.svalka-dungeon_krot_event.name = Кротовая нора</div><div class="diff-line added">battlefield.id.krot2.point.post.name = Пост</div><div class="diff-line added">ejection.stage.notf.starting_8 = Молитесь, чтобы ваше укрытие выдержало - сейчас начнется самый настоящий апокалипсис!</div><div class="diff-line added">item.camo.wpn.bf_skin_19.name = Краска «Зеленые нити»</div><div class="diff-line added">battlefield.id.krot2.point.cross.name = Крест</div><div class="diff-line added">item.camo.arm.bf_skin_3.name = Краска «Красные осколки»</div><div class="diff-line added">ejection.stage.notf.ending_20 = Выброс окончен! Беги смотреть, что он в этот раз с Зоной сотворил.</div><div class="diff-line added">ejection.stage.notf.ending_23 = Так, судя по показаниям приборов, обстановка нормализовалась.\nМожете выходить наружу, опасности нет.</div><div class="diff-line added">ejection.stage.notf.ending_24 = Ну что, очередной выброс позади. Надеюсь, обошлось без жертв.</div><div class="diff-line added">ejection.stage.notf.storm_16 = Сообщение для тех, кто все еще снаружи. Поздно суетиться, выброс начался!</div><div class="diff-line added">ejection.stage.notf.starting_22 = Внимание, первая фаза выброса стартовала. Ее еще можно пережить, а вот вторую…\nкороче, топайте в укрытие, если не хотите превратиться в пепел!</div><div class="diff-line added">ejection.stage.notf.preparation_14 = Внимание, с минуты на минуту на Зону обрушится Выброс.\nНе найдете укрытие - превратитесь в шашлык для мутантов!</div><div class="diff-line added">battlefield.id.pripyat.point.western_parking.name = Западная стоянка</div><div class="diff-line added">battlefield.id.collapse.name = Коллапс</div><div class="diff-line added">ejection.stage.notf.preparation_9 = Мужики, советую подыскать себе уютный бункер - Выброс приближается!</div><div class="diff-line added">ejection.stage.notf.ending_15 = Небо снова чистое, так что можете покинуть убежище.\nВыброс окончен.</div><div class="diff-line added">ejection.stage.notf.storm_24 = Началась активная фаза выброса. Кто не успел спрятаться - сгорит заживо.\nИ для кого, спрашивается, я здесь распинаюсь...</div><div class="diff-line added">battlefield.id.reich.name = Штурм Рейхстага</div><div class="diff-line added">ejection.stage.notf.deadline_22 = Хуже уже не будет, выброс на пике своей активности!</div><div class="diff-line added">ejection.stage.notf.starting_13 = Для тех, кто в танке - выброс уже начался, но время смыться еще есть!\nБыстро все в укрытие!</div><div class="diff-line added">ejection.stage.notf.starting_18 = Время на исходе, еще немного - и рванет так, что от вас мокрого места не останется!\nБегом в укрытие!</div><div class="diff-line added">ejection.stage.notf.preparation_12 = Пятой точкой чую, скоро жахнет Выброс. Советую всем залечь на дно и не высовываться!</div><div class="diff-line added">ejection.stage.notf.deadline_26 = Судя по приборам, выброс жарит на пределе!\nДержимся, мужики, скоро он выдохнется!</div><div class="diff-line added">battlefield.id.pripyat.point.lenin.name = Проспект Ленина</div><div class="diff-line added">ejection.stage.notf.deadline_7 = Даже не думайте высовываться наружу - выброс в самом разгаре!</div><div class="diff-line added">ejection.stage.notf.starting_19 = Выброс стартовал, но еще не успел набрать обороты.\nПоследний шанс найти укрытие, народ!</div><div class="diff-line added">item.camo.arm.bf_skin_14.name = Краска «Бордовые наросты»</div><div class="diff-line added">ejection.stage.notf.deadline_12 = Выброс в зените! Еще чуть-чуть потрясет, и можно выходить наружу.\nА пока сидите и не дергайтесь!</div><div class="diff-line added">ejection.stage.notf.deadline_16 = Вот ведь разошелся, гад. Выброс шатает так, что весь бункер ходуном ходит!</div><div class="diff-line added">ejection.stage.notf.deadline_9 = Не вздумайте покидать укрытие, не дождавшись моего оповещения!\nСкоро все закончится, не переживайте.</div><div class="diff-line added">item.camo.arm.bf_skin_1.name = Краска «Срыв»</div><div class="diff-line added">ejection.stage.notf.preparation_19 = Приборы подсказывают, что в Зоне намечается выброс.\nЛучше заранее подыщите себе укрытие, если не хотите поджариться!</div><div class="diff-line added">ejection.stage.notf.deadline_20 = Снаружи сейчас жарче, чем на солнце! Выброс на пике, мужики!</div><div class="diff-line added">battlefield.id.hospital.point.centre.name = Центр</div><div class="diff-line added">battlefield.id.krot2.name = Кротовая нора</div><div class="diff-line added">battlefield.id.stakan.name = Стакан</div><div class="diff-line added">ejection.stage.notf.deadline_19 = Ух как разбушевался! Ну ничего, значит, скоро выброс пойдет на спад.\nПотерпите чуток!</div><div class="diff-line added">item.camo.arm.bf_skin_8.name = Краска «Blufor»</div><div class="diff-line added">item.wpn.gornostay.name = АКС-9 «Горностай»</div><div class="diff-line added">item.camo.arm.bf_skin_2.name = Краска «Ярость»</div><div class="diff-line added">battlefield.id.peklo.name = Пекло</div><div class="diff-line added">ejection.stage.notf.deadline_25 = Осталось совсем чуть-чуть, выброс достиг критической точки!</div><div class="diff-line added">gui.battlefields.banner.patchnotes = Открыть патчноут</div><div class="diff-line added">ejection.stage.notf.starting_11 = Не думайте, что вас пронесло - выброс только набирает обороты!\nДуйте в укрытие, если жизнь дорога!</div><div class="diff-line added">battlefield.id.krot2.point.kpp.name = КПП</div><div class="diff-line added">ejection.stage.notf.ending_19 = Все, расслабьте булки, мужики. Выброс закончился.</div><div class="diff-line added">ejection.stage.notf.starting_16 = Народ, сейчас на улице будет, как в печке у дьявола! Быстро все попрятались в укрытия!</div><div class="diff-line added">ejection.stage.notf.preparation_15 = Внимание, это не учебная тревога! Приборы обнаружили формирование нового Выброса!\nВсем искателям Зоны срочно найти убежище!</div><div class="diff-line added">ejection.stage.notf.starting_7 = Это еще цветочки! Готовьтесь, мужики, вот-вот жахнет в полную силу!</div><div class="diff-line added">item.camo.arm.bf_skin_13.name = Краска «Сапфир»</div><div class="diff-line modified">item.24012.name = Серебряный жетон бандита</div><div class="diff-line added">ejection.stage.notf.preparation_23 = У меня вся электроника с ума посходила!\nПохоже, скоро нас накроет нехилый выброс - все в укрытие!</div><div class="diff-line added">item.wpn.highest_power.description = Модифицированный пистолет Hi-Power, адаптированный для патрона 9x39 мм. Увеличенный урон достигается за счет небольшого снижения скорострельности и объема магазина.</div><div class="diff-line added">item.wpn.pulse.features = Стрельба очередями по 3 пт@Скорострельность очередями: 1200 выстрелов/мин</div><div class="diff-line added">ejection.stage.notf.preparation_10 = Ого, как стрелки на приборе заплясали! Похоже, намечается нехилый Выброс!</div><div class="diff-line added">ejection.stage.notf.storm_21 = Держитесь крепче, вот-вот рванет!</div><div class="diff-line added">ejection.stage.notf.ending_25 = Ну наконец-то угомонился. Я уж было подумал, он никогда не закончится…</div><div class="diff-line added">item.wpn.ots14a1.description = Компактный штурмовой автомат калибра 7.62x39 мм. Несмотря на то, что является модификацией ОЦ-14 «Гроза», совместим исключительно с магазинами от АКМ.</div><div class="diff-line added">item.wpn.tact.description = Винтовка, созданная для прицельного ведения огня в любых условиях. Стреляет только отсечками, благодаря чему имеет повышенную точность и слабую отдачу.</div><div class="diff-line added">ejection.stage.notf.deadline_23 = Началась заключительная стадия выброса!\nГотовьтесь, сейчас шандарахнет так, что стены затрещат!</div><div class="diff-line added">battlefield.id.pripyat.point.east_parking.name = Восточная стоянка</div><div class="diff-line added">item.camo.wpn.bf_skin_2.name = Краска «Ярость»</div><div class="diff-line added">item.camo.wpn.bf_skin_20.name = Краска «Фиолетовые нити»</div><div class="diff-line added">item.camo.arm.bf_skin_21.name = Краска «Узор хищника»</div><div class="diff-line added">ejection.stage.notf.starting_20 = Ну все, выброс пошел - теперь каждая секунда на счету. Бегите в укрытие, что есть мочи!</div><div class="diff-line added">item.wpn.pulse.description = Легкая и удобная винтовка для профессионального использования. Отличается точностью и слабой отдачей, благодаря стрельбе исключительно отсечками.</div><div class="diff-line added">item.camo.wpn.bf_skin_9.name = Краска «Кровавый туман»</div><div class="diff-line added">ejection.stage.notf.ending_12 = Фух, пронесло. Выброс закончился, народ,\nкто остался в живых - поздравляю, остальным соболезную.</div><div class="diff-line added">item.camo.arm.bf_skin_15.name = Краска «Сумрачные наросты»</div><div class="diff-line added">battlefield.id.moryatnik_gungame.name = [ГВ] Морятник</div><div class="diff-line added">item.camo.wpn.bf_skin_5.name = Краска «Токсичные осколки»</div><div class="diff-line added">item.wpn.tact.name = PSA PA 10 «Такт»</div><div class="diff-line added">gui.battlefields.banner.block2.desc = Загляни к Спартаку и выбери себе новую пушку! Если ничего не приглянется - всегда можешь прикупить пару ярких красок, и быть в центре внимания во время боя.</div><div class="diff-line added">item.wpn.valm.name = АСМ «Сервал»</div><div class="diff-line added">battlefield.id.krot2.point.defile.name = Дефиле</div><div class="diff-line added">item.camo.wpn.bf_skin_15.name = Краска «Сумрачные наросты»</div><div class="diff-line added">ejection.stage.notf.storm_26 = Все, наружу ни шагу - выброс стартовал!</div><div class="diff-line added">loadscreens.location.battlefield_sovetpunk_open.name = ГОСТ-17</div><div class="diff-line added">ejection.stage.notf.preparation_20 = Народ, заканчивайте свои голодные игры - выброс на подходе!</div><div class="diff-line added">item.wpn.pulse.name = PSA 20 STR «Пульс»</div><div class="diff-line added">item.brt.battlefields.additional_stats_tip = «Честь и доблесть добываются кровью!» (С) Спартак\nЭто не столько валюта, сколько доказательство себе и остальным, что ты - лучший.</div><div class="diff-line added">ejection.stage.notf.storm_23 = Внимание, стартует активная фаза выброса!\nНадеюсь, все успели добраться до укрытия...</div><div class="diff-line added">item.camo.wpn.bf_skin_16.name = Краска «Мутировавшие наросты»</div><div class="diff-line added">battlefield.id.sovetpunk_deathmatch.description = Интенсивный режим сражения, где каждый сражается сам за себя — побеждает тот, кто совершит больше всего убийств за отведенное время!</div><div class="diff-line added">ejection.stage.notf.preparation_11 = Выброс на подходе! Если не хотите получить бронзовый загар, топайте в укрытие!</div><div class="diff-line added">battlefield.id.sovetpunk_gungame.name = [ГВ] ГОСТ-17</div><div class="diff-line added">item.camo.arm.bf_skin_5.name = Краска «Токсичные осколки»</div><div class="diff-line added">item.camo.arm.bf_skin_19.name = Краска «Зеленые нити»</div><div class="diff-line added">ejection.stage.notf.deadline_18 = Выброс жарит на максимум, вся электроника с ума посходила!</div><div class="diff-line added">battlefield.id.sovetpunk_deathmatch.name = [ДМ] ГОСТ-17</div><div class="diff-line added">item.wpn.a762.name = А-762 «Арес»</div><div class="diff-line added">ejection.stage.notf.preparation_22 = Бросайте все свои дела и шуруйте в укрытие - с минуты на минуту Зону поджарит выброс!</div><div class="diff-line added">item.camo.arm.bf_skin_11.name = Краска «Изумрудный взрыв»</div><div class="diff-line added">gui.battlefields.banner.trader.actionText = В магазин</div><div class="diff-line added">item.camo.arm.bf_skin_18.name = Краска «Синие нити»</div><div class="diff-line added">ejection.stage.notf.deadline_8 = Пиковая фаза Выброса хоть и мощная, но короткая, потерпите еще немного!</div><div class="diff-line added">shop.tabs.special.personal_offers.title = ПЕРСОНАЛЬНОЕ ПРЕДЛОЖЕНИЕ</div><div class="diff-line added">ejection.stage.notf.starting_17 = Еще немного, и Выброс ударит по-взрослому, прячьтесь скорее!</div><div class="diff-line added">battlefield.id.reich.point.hall.name = Зал</div><div class="diff-line added">battlefield.id.rus.name = Поле брани</div><div class="diff-line added">item.wpn.ots14a1.name = ОЦ-14-А1 «Тор»</div><div class="diff-line added">ejection.stage.notf.starting_24 = Выброс начался, повторяю - выброс начался! Пока только припекает, но скоро начнет жарить по полной.\nТак что двигайте в убежище, если жизнь дорога.</div><div class="diff-line added">ejection.stage.notf.deadline_17 = Внимание, внимание! Выброс достиг критического уровня!</div><div class="diff-line added">ejection.stage.notf.ending_26 = Все, народ, угроза миновала. Можете вновь рыскать по Зоне\nв поисках заветных артефактов, только смотрите в аномалию не угодите!</div><div class="diff-line added">battlefield.id.rus.point.north.name = Идол Перуна</div><div class="diff-line added">ejection.stage.notf.ending_11 = Аппаратура цела, диктор невредим. Поздравляю нас\nс еще одним пережитым Выбросом, господа!</div><div class="diff-line deleted">item.scheme.aksu_mod_3.item_origin_tip = С низким шансом при обнаружении сигналов в Яме, Лесу и далее</div><div class="diff-line deleted">item.scheme.aksu_mod_1.name = Часть схемы #1: «Горностай»</div><div class="diff-line deleted">battlefield.id.waterjail_open.name = Затопленная тюрьма</div><div class="diff-line deleted">item.scheme.m4_mod_2.item_origin_tip = С низким шансом при обнаружении сигналов на Обочине и далее</div><div class="diff-line deleted">battlefield.id.krot2_open.point.cross.name = Крест</div><div class="diff-line deleted">item.scheme.m4_mod_3.name = Часть схемы #3: «Пульс»</div><div class="diff-line deleted">battlefield.id.collapse_open.point.east.name = Восток</div><div class="diff-line deleted">item.scheme.m4_mod_4.name = Часть схемы #4: «Пульс»</div><div class="diff-line deleted">battlefield.id.kolizei_open.point.block_4.name = Блок 4</div><div class="diff-line deleted">battlefield.id.krot2_open.point.post.name = Пост</div><div class="diff-line deleted">battlefield.id.collapse_open.point.south.name = Юг</div><div class="diff-line deleted">battlefield.id.pripyat_open.point.box.name = Коробка</div><div class="diff-line deleted">battlefield.id.rus_open.team2.name = Ящеры</div><div class="diff-line deleted">battlefield.id.krot2_open.name = «Кротовая» нора</div><div class="diff-line deleted">battlefield.id.reich_open.name = Штурм Рейхстага</div><div class="diff-line deleted">battlefield.id.rus_open.point.north.name = Идол Перуна</div><div class="diff-line deleted">item.scheme.aksu_mod_4.name = Часть схемы #4: «Горностай»</div><div class="diff-line deleted">battlefield.id.kolizei_open.name = Колизей</div><div class="diff-line deleted">item.wpn.aksu_mod.description = Конверсия «ксюхи» в булл-пап под патрон калибра 7.62.</div><div class="diff-line deleted">battlefield.id.pripyat_open.point.east_parking.name = Восточная стоянка</div><div class="diff-line deleted">item.wpn.m4_mod.description = Модификация M4, выпускающая залп из пяти патронов после небольшой задержки. Цель получит колоссальное количество урона в момент времени, если все пули будут положены точно в цель.</div><div class="diff-line deleted">item.scheme.m4_mod_1.item_origin_tip = С низким шансом при обнаружении сигналов на Болотах и далее</div><div class="diff-line deleted">battlefield.id.peklo_open.name = Пекло</div><div class="diff-line deleted">item.scheme.aksu_mod_2.name = Часть схемы #2: «Горностай»</div><div class="diff-line deleted">battlefield.id.collapse_open.point.centre.name = Центр</div><div class="diff-line deleted">battlefield.id.hospital_open.name = Госпиталь</div><div class="diff-line deleted">item.wpn.m4_mod.name = «Пульс»</div><div class="diff-line deleted">item.scheme.aksu_mod_2.item_origin_tip = С низким шансом при обнаружении сигналов на Обочине и далее</div><div class="diff-line deleted">item.scheme.aksu_mod_4.item_origin_tip = Аномальные сигналы</div><div class="diff-line deleted">battlefield.id.hospital_winter_open.name = Снежная битва (Госпиталь)</div><div class="diff-line deleted">battlefield.id.rus_open.point.south.name = Кладка Ящеров</div><div class="diff-line deleted">item.wpn.mr133_mod.description = Модификация «Мурки», использующая компоненты гравитационных артефактов для повышения убойной силы.</div><div class="diff-line deleted">battlefield.id.collapse_open.point.west.name = Запад</div><div class="diff-line deleted">battlefield.id.pripyat_open.name = Улицы Припяти</div><div class="diff-line deleted">battlefield.id.rus_open.point.middle.name = Центр</div><div class="diff-line deleted">battlefield.id.krot2_open.point.kpp.name = КПП</div><div class="diff-line deleted">battlefield.id.kolizei_open.point.block_1.name = Блок 1</div><div class="diff-line deleted">battlefield.id.kolizei_open.point.laboratory.name = Лаборатория</div><div class="diff-line deleted">battlefield.id.jail_open.point.centre.name = Центр</div><div class="diff-line deleted">battlefield.id.reich_open.point.wing.name = Фланг</div><div class="diff-line deleted">battlefield.id.moryatnik_open.name = Морятник</div><div class="diff-line deleted">item.scheme.aksu_mod_1.item_origin_tip = С низким шансом при обнаружении сигналов на Болотах и далее</div><div class="diff-line deleted">battlefield.id.collapse_open.point.north.name = Север</div><div class="diff-line deleted">battlefield.id.hospital_open.point.centre.name = Центр</div><div class="diff-line deleted">item.scheme.m4_mod_3.item_origin_tip = С низким шансом при обнаружении сигналов в Яме, Лесу и далее</div><div class="diff-line deleted">item.scheme.m4_mod_1.name = Часть схемы #1: «Пульс»</div><div class="diff-line deleted">battlefield.id.rus_open.name = Поле брани</div><div class="diff-line deleted">battlefield.id.pripyat_open.point.lenin.name = Проспект Ленина</div><div class="diff-line deleted">battlefield.id.moryatnik_open.point.centre.name = Центр</div><div class="diff-line deleted">item.wpn.aksu_mod.name = «Горностай»</div><div class="diff-line deleted">item.wpn.mr133_mod.name = «Хлопок»</div><div class="diff-line deleted">battlefield.id.reich_open.point.hall.name = Зал</div><div class="diff-line deleted">battlefield.id.stakan_open.point.centre.name = Центр</div><div class="diff-line deleted">battlefield.id.collapse_open.name = Коллапс</div><div class="diff-line deleted">battlefield.id.rus_open.team1.name = Русы</div><div class="diff-line deleted">battlefield.id.jail_open.name = Тюрьма</div><div class="diff-line deleted">battlefield.id.peklo_open.point.centre.name = Центр</div><div class="diff-line deleted">battlefield.id.pripyat_open.point.western_parking.name = Западная стоянка</div><div class="diff-line deleted">battlefield.id.krot2_open.point.load.name = Погрузочная</div><div class="diff-line deleted">battlefield.id.kolizei_open.point.block_3.name = Блок 3</div><div class="diff-line deleted">battlefield.id.pripyat_open.point.garage.name = Гараж</div><div class="diff-line deleted">battlefield.id.reich_open.point.entrance.name = Вход</div><div class="diff-line deleted">item.scheme.m4_mod_2.name = Часть схемы #2: «Пульс»</div><div class="diff-line deleted">battlefield.id.krot2_open.point.defile.name = Дефиле</div><div class="diff-line deleted">item.scheme.m4_mod_4.item_origin_tip = С низким шансом при обнаружении сигналов в Полесском и далее</div><div class="diff-line deleted">battlefield.id.kolizei_open.point.block_2.name = Блок 2</div><div class="diff-line deleted">battlefield.id.stakan_open.point.east.name = Зал</div><div class="diff-line deleted">battlefield.id.reich_night_open.name = Штурм Рейхстага (ночь)</div><div class="diff-line deleted">item.scheme.aksu_mod_3.name = Часть схемы #3: «Горностай»</div><div class="diff-line deleted">battlefield.id.stakan_open.name = Стакан</div></div>
+    <div class="footer">
+        <a href="https://github.com/BuildersSC/Krevetka" target="_blank">
+            <img src="icon.png" alt="Krevetka Logo">
+            <span>This HTML site generated by Krevetka.</span>
+        </a>
+    </div>
+</body>
+</html>
