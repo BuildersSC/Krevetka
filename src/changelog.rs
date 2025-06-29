@@ -9,10 +9,9 @@ enum ChangeType {
     Deleted,
 }
 
-pub fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], output_dir: &Path, use_ots: bool) -> Result<(), MapError> {
+pub fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], output_dir: &Path) -> Result<(), MapError> {
     fs::create_dir_all(output_dir)?;
     let timestamp = chrono::Local::now().format("%d.%m.%Y");
-    let bg_color = if use_ots { "#331717" } else { "#1e1e1e" };
 
     let mut html_content = format!(
         r#"<!DOCTYPE html>
@@ -21,7 +20,7 @@ pub fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], ou
     <meta charset="UTF-8">
     <title>ChangeLog {}</title>
     <style>
-        body {{ background-color: {}; color: #c5c5c5; font-family: monospace; padding: 16px; }}
+        body {{ background-color: #1e1e1e; color: #c5c5c5; font-family: monospace; padding: 16px; }}
         .changes {{ width: 100%; }}
         .directory, .file, .path {{ margin-left: 16px; }}
         .path {{ opacity: 0.5; }}
@@ -45,7 +44,7 @@ pub fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], ou
     <h3>Источник: <a href="https://github.com/Art3mLapa" target="_blank">Krevetka</a></h3>
     <div class="changes">
 "#,
-        timestamp, bg_color, timestamp
+        timestamp, timestamp
     );
 
     let mut changes: std::collections::BTreeMap<String, Vec<(String, ChangeType)>> = std::collections::BTreeMap::new();
@@ -131,7 +130,7 @@ pub fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], ou
         let current_prefix = if path.is_empty() { String::new() } else { format!("{}/", path) };
         let subdirs: Vec<_> = dir_tree
             .keys()
-            .filter(|k| k.starts_with(¤t_prefix) && *k != path && k[current_prefix.len()..].split('/').count() == 1)
+            .filter(|k| k.starts_with(&current_prefix) && *k != path && k[current_prefix.len()..].split('/').count() == 1)
             .collect();
         for subdir in subdirs {
             generate_html(subdir, dir_tree, html, if path.is_empty() { 0 } else { indent + 2 });

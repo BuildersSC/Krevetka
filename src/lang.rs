@@ -2,8 +2,8 @@ use crate::map::MapError;
 use std::fs;
 use std::path::Path;
 
-pub fn process_lang_file(game_path: &Path, use_ots: bool) -> Result<(), MapError> {
-    let standard_lang_path = game_path
+pub fn process_lang_file(game_path: &Path) -> Result<(), MapError> {
+    let lang_path = game_path
         .join("runtime")
         .join("stalcraft")
         .join("modassets")
@@ -11,16 +11,7 @@ pub fn process_lang_file(game_path: &Path, use_ots: bool) -> Result<(), MapError
         .join("stalker")
         .join("lang")
         .join("ru.lang");
-    let ots_lang_path = game_path
-        .join("runtime")
-        .join("stalcraft_ots")
-        .join("modassets")
-        .join("assets")
-        .join("stalker")
-        .join("lang")
-        .join("ru.lang");
 
-    let lang_path = if use_ots { &ots_lang_path } else { &standard_lang_path };
     if !lang_path.exists() {
         println!("Файл локализации не найден: {}", lang_path.display());
         return Ok(());
@@ -28,7 +19,7 @@ pub fn process_lang_file(game_path: &Path, use_ots: bool) -> Result<(), MapError
 
     let env_dir = std::path::PathBuf::from("environment").join("lang");
     fs::create_dir_all(&env_dir)?;
-    let env_lang = env_dir.join(if use_ots { "ru_ots.lang" } else { "ru.lang" });
+    let env_lang = env_dir.join("ru.lang");
 
     if !env_lang.exists() {
         fs::copy(&lang_path, &env_lang)?;
@@ -37,16 +28,7 @@ pub fn process_lang_file(game_path: &Path, use_ots: bool) -> Result<(), MapError
     }
 
     let game_content = fs::read_to_string(&lang_path)?;
-    let env_content = if use_ots {
-        let standard_env_lang = env_dir.join("ru.lang");
-        if standard_env_lang.exists() {
-            fs::read_to_string(&standard_env_lang)?
-        } else {
-            String::new()
-        }
-    } else {
-        fs::read_to_string(&env_lang)?
-    };
+    let env_content = fs::read_to_string(&env_lang)?;
 
     if game_content == env_content {
         return Ok(());

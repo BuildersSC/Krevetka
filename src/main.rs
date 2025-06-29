@@ -1,35 +1,32 @@
-use std::env;
 use std::thread;
 use std::time::Duration;
 use crate::changelog::generate_changelog;
 use crate::github::publish_html;
 use crate::lang::process_lang_file;
-use crate::map::{copy_initial_files, get_game_path, get_stalcraft_map_path, init_environment, read_map_entries};
+use crate::map::{get_game_path, get_stalcraft_map_path, init_environment, read_map_entries, MapError};
 
 mod changelog;
-mod config;
 mod github;
 mod lang;
 mod map;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let args: Vec<String> = env::args().collect();
-    let use_ots = args.contains(&"ots".to_string());
-
     // Инициализация окружения
-    let env_map = init_environment(use_ots)?;
-
-    // Если указан --ots, сначала копируем файлы без сравнения
-    if use_ots {
-        copy_initial_files()?;
-        println!("Начальные файлы скопированы для OTS режима");
-    }
+    let env_map = init_environment()?;
 
     // Основной цикл мониторинга
     let mut last_diff_content = String::new();
     loop {
-        match get_stalcraft_map_path(use_ots) {
-            Ok(game_map) if game_map.exists() => {
+        let game_map_result = get_stalcraft_map_path().and_then(|path| {
+            if path.exists() {
+                Ok(path)
+            } else {
+                Err(MapError::GameFileNotFound)
+            }
+        });
+
+        match game_map_result {
+            Ok(game_map) => {
                 let mut changes_detected = false;
                 let mut map_entries = None;
 
@@ -49,7 +46,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
                 // Проверка изменений в файле локализации
                 if let Ok(game_dir) = get_game_path() {
-                    if let Err(e) = process_lang_file(&game_dir, use_ots) {
+                    if let Err(e) = process_lang_file(&game_dir) {
                         eprintln!("Ошибка при обработке lang файла: {}", e);
                     } else {
                         let diff_path = std::path::PathBuf::from("changes").join("lang_changes.diff");
@@ -73,18 +70,21 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         let entries = read_map_entries(&env_map).expect("Не удалось прочитать env_map");
                         (entries.clone(), entries)
                     });
-                    generate_changelog(&entries.0, &entries.1, std::path::Path::new("docs"), use_ots)?;
+                    generate_changelog(&entries.0, &entries.1, std::path::Path::new("docs"))?;
                     publish_html()?;
                     println!("Изменения сохранены в HTML документе и опубликованы");
                 }
 
                 thread::sleep(Duration::from_secs(1));
             }
-            Err(map::MapError::GameFileNotFound) => {
+            Err(MapError::GameFileNotFound) => {
                 println!("Файл игры не найден, повторная попытка через 1 секунду...");
                 thread::sleep(Duration::from_secs(1));
             }
-            Err(e) => return Err(Box::new(e)),
+            Err(e) => {
+                eprintln!("Ошибка при получении пути к файлу: {}", e);
+                thread::sleep(Duration::from_secs(1));
+            }
         }
     }
 }
