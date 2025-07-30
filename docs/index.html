@@ -9,10 +9,26 @@
             color: #c5c5c5;
             font-family: monospace;
             padding: 16px;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url('pattern_anti_spectrum.png');
             background-repeat: repeat;
             background-size: 200px;
             opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
         }
         .changes { width: 100%; }
         .directory, .file, .path { margin-left: 16px; }
