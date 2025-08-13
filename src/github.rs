@@ -1,5 +1,7 @@
+use std::env;
 use std::process::Command;
 use thiserror::Error;
+use crate::config::{load_config, Config};
 
 #[derive(Error, Debug)]
 pub enum PublishError {
@@ -7,13 +9,25 @@ pub enum PublishError {
     IoError(#[from] std::io::Error),
     #[error("Ошибка выполнения BunJS: {0}")]
     ExecutionError(String),
-    #[error("Ошибка загрузки переменных окружения: {0}")]
-    EnvError(#[from] dotenvy::Error),
+    #[error("Ошибка загрузки конфигурации: {0}")]
+    ConfigError(#[from] Box<dyn std::error::Error>),
 }
 
 pub fn publish_html() -> Result<(), PublishError> {
-    // Загрузка переменных из .env файла
-    dotenvy::dotenv()?;
+    let config: Config = load_config()?;
+
+    let token_preview = if config.github.token.len() > 8 {
+        format!(
+            "{}...{}",
+            &config.github.token[..4],
+            &config.github.token[config.github.token.len() - 4..]
+        )
+    } else {
+        "слишком короткий токен".to_string()
+    };
+    println!("Используется GitHub токен: {}", token_preview);
+
+    env::set_var("GITHUB_TOKEN", &config.github.token);
 
     let output = Command::new("bun")
         .arg("run")
