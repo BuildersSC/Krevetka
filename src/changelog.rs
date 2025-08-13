@@ -18,28 +18,114 @@ pub fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], ou
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>ChangeLog {}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Изменения в файлах ассетов игры">
+    <title>Патчноут {}</title>
     <style>
-        body {{ background-color: #1e1e1e; color: #c5c5c5; font-family: monospace; padding: 16px; }}
-        .changes {{ width: 100%; }}
-        .directory, .file, .path {{ margin-left: 16px; }}
-        .path {{ opacity: 0.5; }}
-        .directory > .name {{ font-size: 16px; }}
+        body {{
+            background-color: #1e1e1e;
+            color: #c5c5c5;
+            font-family: monospace;
+            padding: 16px;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }}
+        body::before {{
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('pattern_anti_spectrum.png');
+            background-repeat: repeat;
+            background-size: 200px;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }}
+        .changes {{
+            width: 100%;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }}
+        .directory,
+        .file,
+        .path {{
+            margin-left: 16px;
+            width: 100%;
+            position: relative;
+        }}
+        .path {{
+            opacity: 0.5;
+        }}
+        .directory > .name {{
+            font-size: 16px;
+        }}
         .added {{ color: #a0d468; }}
         .deleted {{ color: #ff6b6b; }}
         .modified {{ color: #ffd700; }}
-        .lang-changes {{ margin-top: 30px; padding: 20px; background: rgba(30, 30, 30, 0.7); border-radius: 8px; }}
-        .diff-line {{ font-family: 'Consolas', monospace; padding: 4px 8px; margin: 2px 0; border-radius: 4px; background: rgba(0, 0, 0, 0.2); }}
-        .no-changes {{ text-align: center; padding: 20px; color: #888; font-style: italic; }}
-        .footer {{ margin-top: 20px; text-align: center; padding: 10px; border-top: 1px solid #333; }}
-        .footer a {{ color: #c5c5c5; text-decoration: none; }}
-        .footer a:hover {{ color: #8a9cff; }}
-        h3 a {{ color: #8a9cff; text-decoration: none; }}
-        h3 a:hover {{ color: #b39ddb; }}
+        .lang-changes {{
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+        }}
+        .diff-line {{
+            font-family: 'Consolas', monospace;
+            padding: 4px 8px;
+            margin: 2px 0;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.2);
+        }}
+        .no-changes {{
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-style: italic;
+        }}
+        .footer {{
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid #333;
+            position: relative;
+            z-index: 1;
+        }}
+        .footer a {{
+            color: #c5c5c5;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }}
+        .footer a:hover {{
+            color: #8a9cff;
+        }}
+        .footer img {{
+            width: 24px;
+            height: 24px;
+        }}
+        h3 a {{
+            color: #8a9cff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }}
+        h3 a:hover {{
+            color: #b39ddb;
+        }}
     </style>
 </head>
 <body>
-    <h1>ChangeLog {}</h1>
+    <h1>Патчноут {}</h1>
     <h2>Изменения файловой структуры</h2>
     <h3>Источник: <a href="https://github.com/Art3mLapa" target="_blank">Krevetka</a></h3>
     <div class="changes">
@@ -148,7 +234,8 @@ pub fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], ou
     html_content.push_str(
         r#"</div>
     <h2>Изменения в файле локализации</h2>
-    <div class="lang-changes">"#,
+    <div class="lang-changes">
+"#,
     );
 
     let diff_path = std::path::PathBuf::from("changes").join("lang_changes.diff");
@@ -163,7 +250,8 @@ pub fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], ou
             };
             html_content.push_str(&format!(
                 r#"<div class="diff-line {}">{}</div>"#,
-                class, content
+                class,
+                html_escape::encode_text(&content)
             ));
         }
     } else {
@@ -174,7 +262,7 @@ pub fn generate_changelog(old_entries: &[MapEntry], new_entries: &[MapEntry], ou
         r#"</div>
     <div class="footer">
         <a href="https://github.com/BuildersSC/Krevetka" target="_blank">
-            <span>This HTML site generated by Krevetka.</span>
+            <img src="icon.png" alt="Krevetka Logo">
         </a>
     </div>
 </body>
